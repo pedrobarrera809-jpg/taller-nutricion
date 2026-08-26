@@ -1,0 +1,843 @@
+<title>Taller en Vivo · Estilo A</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+
+<style>
+/* ============================================================
+   ESTILO A — "EN VIVO"
+   Dirección: pantalla encendida. Oscuro, cinematográfico, con la
+   herramienta escribiéndose sola en el hero. Un solo tema (oscuro),
+   pintado explícitamente. Cada color tiene un trabajo:
+   azul = interfaz, ámbar = acción, rojo = señal de directo.
+   ============================================================ */
+:root{
+  --bg:#060B12;
+  --panel:#0B1622;
+  --panel-2:#0F1E2D;
+  --line:#182C3E;
+  --line-soft:#122333;
+  --ink:#EDF4F9;
+  --muted:#8AA4B8;
+  --blue:#4A93FF;
+  --blue-soft:rgba(74,147,255,.12);
+  --amber:#FFC24B;
+  --amber-ink:#1A1206;
+  --live:#FF4D4D;
+  --maxw:1240px;
+  --pad:clamp(20px,5vw,60px);
+}
+*,*::before,*::after{box-sizing:border-box}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:Archivo,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.03em;line-height:1.02;text-wrap:balance}
+h1{font-size:clamp(2.5rem,6.4vw,5rem)}
+h2{font-size:clamp(2rem,4.4vw,3.4rem)}
+h3{font-size:1.15rem;letter-spacing:-.01em;line-height:1.25}
+p{margin:0}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+.band{padding-block:clamp(64px,9vw,128px);position:relative}
+
+.label{font-family:Archivo,"Segoe UI",Arial,sans-serif;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500}
+.ph{font-family:Archivo,"Segoe UI",Arial,sans-serif;font-size:.92em;border-bottom:1px dashed currentColor;white-space:nowrap}
+
+.tag{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:7px 14px;border:1px solid var(--line);border-radius:999px;
+  background:var(--panel);color:var(--muted);
+}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--live);flex:none;box-shadow:0 0 0 0 rgba(255,77,77,.6);animation:pulse 2.4s infinite}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(255,77,77,.55)}
+  70%{box-shadow:0 0 0 9px rgba(255,77,77,0)}
+  100%{box-shadow:0 0 0 0 rgba(255,77,77,0)}
+}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;width:100%;
+  padding:18px 28px;border:0;border-radius:6px;cursor:pointer;
+  background:var(--amber);color:var(--amber-ink);
+  font-family:Archivo,sans-serif;font-size:1.05rem;font-weight:700;letter-spacing:-.01em;
+  text-decoration:none;transition:transform .16s ease, box-shadow .16s ease, background .16s ease;
+  box-shadow:0 0 0 0 rgba(255,194,75,.35);
+}
+.btn:hover{background:#FFD37A;transform:translateY(-1px);box-shadow:0 10px 30px -12px rgba(255,194,75,.65)}
+.btn:active{transform:translateY(0)}
+.btn-wide{width:auto;min-width:min(360px,100%)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:3px}
+
+/* ---------------- HERO ---------------- */
+.hero{position:relative;overflow:hidden;padding-block:clamp(28px,4vw,44px) clamp(56px,8vw,104px)}
+.hero::before{
+  content:"";position:absolute;top:-30%;left:50%;transform:translateX(-50%);
+  width:min(1400px,150vw);height:900px;pointer-events:none;
+  background:radial-gradient(50% 50% at 50% 50%, rgba(74,147,255,.16), transparent 70%);
+}
+.hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(0deg,rgba(255,255,255,.022) 1px,transparent 1px) 0 0/100% 4px;
+  opacity:.6;
+}
+.hero > *{position:relative}
+
+.nav{
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding-block:18px;border-bottom:1px solid var(--line-soft);
+  margin-bottom:clamp(38px,6vw,68px);
+}
+.nav .brand{display:flex;align-items:center;gap:11px;color:var(--ink)}
+.nav .brand svg{width:20px;height:20px;color:var(--blue)}
+.nav .right{display:none;color:var(--muted)}
+@media (min-width:760px){.nav .right{display:block}}
+
+.hero-grid{display:grid;gap:clamp(40px,5vw,64px);align-items:center}
+@media (min-width:1040px){.hero-grid{grid-template-columns:1fr 1.02fr}}
+.hero-copy{display:flex;flex-direction:column;gap:26px;max-width:640px}
+.hero-copy h1 .hl{color:var(--amber)}
+.hero-lead{font-size:clamp(1.05rem,1.5vw,1.2rem);color:var(--muted);max-width:50ch}
+.hero-actions{display:flex;flex-direction:column;gap:14px;max-width:420px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:8px 20px;color:var(--muted);align-items:center}
+.hero-meta b{color:var(--ink);font-weight:600}
+
+/* ---------------- VENTANA DEMO ---------------- */
+.screen{
+  border:1px solid var(--line);border-radius:10px;overflow:hidden;
+  background:var(--panel);
+  box-shadow:0 40px 80px -40px rgba(0,0,0,.9), 0 0 0 1px rgba(74,147,255,.06);
+}
+.screen-bar{
+  display:flex;align-items:center;gap:12px;
+  padding:14px 18px;border-bottom:1px solid var(--line);background:var(--panel-2);
+}
+.screen-bar .ico{width:18px;height:18px;flex:none;color:var(--blue)}
+.screen-bar .title{flex:1;min-width:0;line-height:1.3}
+.screen-bar .title b{display:block;font-size:.92rem;font-weight:600;color:var(--ink);letter-spacing:-.01em}
+.screen-bar .title span{display:block;font-size:.76rem;color:var(--muted)}
+.screen-bar .live{
+  display:inline-flex;align-items:center;gap:7px;flex:none;
+  color:var(--live);font-size:.66rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+}
+
+.screen-tabs{display:flex;gap:0;border-bottom:1px solid var(--line);background:var(--panel-2);overflow-x:auto}
+.screen-tabs button{
+  flex:1 0 auto;background:none;border:0;cursor:pointer;
+  padding:11px 16px;color:var(--muted);
+  font-family:Archivo,sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  border-bottom:2px solid transparent;white-space:nowrap;
+  transition:color .15s ease,border-color .15s ease;
+}
+.screen-tabs button:hover{color:var(--ink)}
+.screen-tabs button.is-on{color:var(--blue);border-bottom-color:var(--blue)}
+
+.screen-body{
+  padding:22px 24px 26px;
+  font-family:"Source Serif 4",Georgia,"Times New Roman",serif;
+  font-size:.95rem;line-height:1.62;color:var(--muted);
+  height:clamp(340px,48vh,430px);overflow-y:auto;scroll-behavior:smooth;
+}
+.screen-body::-webkit-scrollbar{width:8px}
+.screen-body::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+.screen-body h4{
+  margin:0 0 8px;font-family:Archivo,sans-serif;font-size:.7rem;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--blue);
+}
+.screen-body section{padding-bottom:20px;margin-bottom:20px;border-bottom:1px solid var(--line-soft)}
+.screen-body section:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
+.screen-body p{margin:0 0 10px}
+.screen-body p:last-child{margin-bottom:0}
+.screen-body b{color:var(--ink);font-weight:600}
+.screen-body .meta{
+  font-family:Archivo,sans-serif;font-size:.78rem;color:var(--ink);
+  display:flex;flex-wrap:wrap;gap:6px 16px;margin-bottom:16px;
+}
+.screen-body .meta span{color:var(--muted)}
+.screen-body .meta span b{color:var(--ink)}
+.screen-foot{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:12px 18px;border-top:1px solid var(--line);background:var(--panel-2);color:var(--muted);
+}
+.replay{
+  background:none;border:1px solid var(--line);color:var(--muted);
+  padding:6px 12px;border-radius:5px;cursor:pointer;
+  font-family:Archivo,"Segoe UI",Arial,sans-serif;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+  transition:color .15s ease,border-color .15s ease;
+}
+.replay:hover{color:var(--blue);border-color:var(--blue)}
+
+/* ---------------- ESPACIOS PARA FOTOS ----------------
+   Para poner tu foto: descomenta la etiqueta <img> que está
+   dentro de cada .photo y borra el bloque <span class="hint">.
+   ------------------------------------------------------ */
+.photo{
+  position:relative;overflow:hidden;border-radius:10px;
+  background:var(--panel-2);border:1px dashed var(--line);
+  display:grid;place-items:center;text-align:center;padding:18px;
+}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.photo .hint{color:var(--muted);font-size:.76rem;line-height:1.5;max-width:24ch}
+.photo .hint b{display:block;color:var(--blue);font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px}
+.photo-portrait{aspect-ratio:4/5}
+.photo-square{aspect-ratio:1/1}
+.photo-wide{aspect-ratio:3/2}
+
+.gallery{display:grid;gap:14px}
+@media (min-width:760px){.gallery{grid-template-columns:repeat(3,1fr)}}
+.gallery figure{margin:0;display:flex;flex-direction:column;gap:10px}
+.gallery figcaption{color:var(--muted);font-size:.85rem}
+
+.author{
+  display:flex;align-items:center;gap:13px;padding-top:6px;
+}
+.author .photo{width:52px;height:52px;border-radius:50%;flex:none;padding:0}
+.author .photo .hint{font-size:.5rem;letter-spacing:.06em;text-transform:uppercase;line-height:1.15}
+.author .who{line-height:1.35}
+.author .who b{display:block;color:var(--ink);font-weight:600;font-size:.95rem}
+.author .who span{display:block;color:var(--muted);font-size:.82rem}
+
+/* ---------------- MÉTRICAS ---------------- */
+.strip{border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);background:var(--panel)}
+.strip .wrap{display:grid;gap:0}
+@media (min-width:760px){.strip .wrap{grid-template-columns:repeat(3,1fr)}}
+.stat{padding:26px 0;border-bottom:1px solid var(--line-soft)}
+@media (min-width:760px){
+  .stat{padding:30px 34px;border-bottom:0;border-right:1px solid var(--line-soft)}
+  .stat:first-child{padding-left:0}
+  .stat:last-child{border-right:0;padding-right:0}
+}
+.stat .big{font-size:clamp(1.9rem,3.4vw,2.6rem);font-weight:700;letter-spacing:-.03em;line-height:1.05}
+.stat .lbl{color:var(--muted);margin-top:6px;font-size:.95rem}
+
+/* ---------------- SECCIONES ---------------- */
+.head{display:flex;flex-direction:column;gap:18px;margin-bottom:clamp(38px,5vw,60px);max-width:760px}
+.head .label{color:var(--blue)}
+
+.cards{display:grid;gap:18px}
+@media (min-width:880px){.cards{grid-template-columns:repeat(3,1fr)}}
+.card{
+  background:var(--panel);border:1px solid var(--line);border-radius:9px;
+  padding:26px 24px 30px;display:flex;flex-direction:column;gap:14px;
+  transition:border-color .2s ease, transform .2s ease;
+}
+.card:hover{border-color:var(--blue);transform:translateY(-2px)}
+.card .num{
+  font-family:Archivo,"Segoe UI",Arial,sans-serif;font-size:.72rem;letter-spacing:.14em;
+  color:var(--blue);
+}
+.card p{color:var(--muted)}
+.card strong{color:var(--ink);font-weight:600}
+
+/* dolor */
+.pain{display:grid;gap:clamp(34px,5vw,64px);align-items:start}
+@media (min-width:980px){.pain{grid-template-columns:1fr 1.05fr}}
+.pain h2{max-width:15ch}
+.pain-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+.pain-list li{
+  display:flex;gap:16px;padding:20px 22px;
+  background:var(--panel);border:1px solid var(--line-soft);border-radius:8px;
+  color:var(--muted);
+}
+.pain-list .x{color:var(--live);flex:none;font-family:Archivo,"Segoe UI",Arial,sans-serif;font-size:.9rem;line-height:1.7}
+.quote{
+  margin-top:30px;padding:24px 26px;border-left:3px solid var(--amber);
+  background:linear-gradient(90deg,rgba(255,194,75,.08),transparent 70%);
+  font-size:clamp(1.12rem,1.9vw,1.4rem);line-height:1.45;font-weight:500;letter-spacing:-.015em;
+  max-width:48ch;
+}
+
+/* credibilidad */
+.cred{
+  display:grid;gap:clamp(26px,4vw,48px);align-items:center;
+  background:var(--panel);border:1px solid var(--line);border-radius:12px;
+  padding:clamp(28px,4vw,48px);
+}
+@media (min-width:860px){.cred{grid-template-columns:minmax(0,260px) 1fr}}
+.cred p{font-size:clamp(1.08rem,1.7vw,1.3rem);color:var(--muted);max-width:62ch}
+.cred p b{color:var(--ink);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
+.chip{padding:6px 12px;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+
+/* para quién */
+.fit{display:grid;gap:18px}
+@media (min-width:880px){.fit{grid-template-columns:1fr 1fr}}
+.fit-col{border-radius:10px;padding:28px 26px 32px;display:flex;flex-direction:column;gap:20px}
+.fit-yes{background:var(--blue-soft);border:1px solid rgba(74,147,255,.28)}
+.fit-no{background:var(--panel);border:1px solid var(--line)}
+.fit-yes .label{color:var(--blue)}
+.fit-no .label{color:var(--muted)}
+.fit-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px}
+.fit-col li{display:flex;gap:13px;color:var(--muted);line-height:1.5}
+.fit-col li svg{width:18px;height:18px;flex:none;margin-top:4px}
+.fit-yes li svg{color:var(--blue)}
+.fit-no li svg{color:var(--muted);opacity:.55}
+
+/* faq */
+.faq{max-width:840px;display:flex;flex-direction:column;gap:10px}
+.faq details{background:var(--panel);border:1px solid var(--line);border-radius:8px}
+.faq summary{
+  list-style:none;cursor:pointer;padding:20px 52px 20px 22px;position:relative;
+  font-weight:600;font-size:1.06rem;letter-spacing:-.01em;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:"+";position:absolute;right:20px;top:50%;transform:translateY(-50%);
+  color:var(--blue);font-family:Archivo,"Segoe UI",Arial,sans-serif;font-size:1.2rem;
+}
+.faq details[open] summary::after{content:"−"}
+.faq .a{padding:0 24px 22px;color:var(--muted);max-width:64ch}
+
+/* formulario */
+.reg{
+  background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;
+  max-width:520px;margin-inline:auto;scroll-margin-top:24px;
+  box-shadow:0 40px 90px -50px rgba(0,0,0,.95);
+}
+.reg-head{padding:20px 26px;border-bottom:1px solid var(--line);background:var(--panel-2);display:flex;justify-content:space-between;align-items:center;gap:12px}
+.reg-head .label{color:var(--blue)}
+.reg-head .cupos{font-family:Archivo,"Segoe UI",Arial,sans-serif;font-size:.72rem;color:var(--muted);letter-spacing:.08em}
+.reg-body{padding:26px;text-align:left}
+.field{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.field label{font-family:Archivo,"Segoe UI",Arial,sans-serif;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.field input,.field select{
+  font-family:Archivo,sans-serif;font-size:1rem;color:var(--ink);
+  background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:13px 14px;width:100%;
+  transition:border-color .15s ease;
+}
+.field input::placeholder{color:var(--muted);opacity:.6}
+.field input:focus,.field select:focus{border-color:var(--blue)}
+.reg-note{margin-top:14px;font-size:.84rem;color:var(--muted);text-align:center}
+.reg-done{display:none;padding:44px 30px;flex-direction:column;align-items:center;gap:14px;text-align:center}
+.reg.is-done .reg-body{display:none}
+.reg.is-done .reg-done{display:flex}
+.reg-done .tick{width:50px;height:50px;border-radius:50%;background:var(--blue-soft);border:1px solid rgba(74,147,255,.35);color:var(--blue);display:grid;place-items:center}
+.reg-done p{color:var(--muted);max-width:34ch}
+
+/* cierre */
+.close{text-align:center;background:linear-gradient(180deg,var(--bg),var(--panel))}
+.close .inner{display:flex;flex-direction:column;align-items:center;gap:26px}
+.close h2{max-width:16ch}
+.foot{margin-top:clamp(48px,7vw,80px);padding-top:26px;border-top:1px solid var(--line-soft);color:var(--muted);text-align:center;font-size:.9rem}
+
+/* barra móvil */
+.sticky{
+  position:fixed;left:0;right:0;bottom:0;z-index:30;
+  background:rgba(11,22,34,.94);backdrop-filter:blur(10px);
+  border-top:1px solid var(--line);
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom));
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  transform:translateY(120%);transition:transform .3s ease;
+}
+.sticky.is-on{transform:translateY(0)}
+.sticky .when{font-family:Archivo,"Segoe UI",Arial,sans-serif;font-size:.68rem;letter-spacing:.06em;color:var(--muted);line-height:1.4}
+.sticky .btn{width:auto;padding:12px 20px;font-size:.92rem;white-space:nowrap}
+@media (min-width:900px){.sticky{display:none}}
+
+.js .reveal{opacity:0;transform:translateY(16px)}
+.js .reveal.is-in{opacity:1;transform:none;transition:opacity .65s ease,transform .65s cubic-bezier(.2,.7,.3,1)}
+@media (prefers-reduced-motion:reduce){
+  .js .reveal{opacity:1;transform:none}
+  .dot,.caret{animation:none}
+  *{transition-duration:.01ms !important}
+}
+</style>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero">
+  <div class="wrap">
+    <nav class="nav">
+      <div class="brand">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M6 3v6a6 6 0 0 0 12 0V3" stroke-linecap="round"></path>
+          <circle cx="18" cy="17" r="3"></circle>
+          <path d="M12 15v-2" stroke-linecap="round"></path>
+        </svg>
+        <span class="label">IA aplicada a Nutrición clínica</span>
+      </div>
+      <span class="label right">Taller gratuito · <span class="ph">[FECHA]</span></span>
+    </nav>
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="tag label"><span class="dot"></span> Taller gratuito en vivo</span>
+
+        <h1>Voy a armar, en vivo y desde cero, un generador de historias clínicas <span class="hl">con IA</span></h1>
+
+        <p class="hero-lead">Sin una sola línea de código. Para nutricionistas que quieren dejar de perder horas digitando en el computador sin prestar atención al paciente. No te voy a pedir que me creas — lo vas a ver construido frente a ti, en tiempo real.</p>
+
+        <div class="hero-actions">
+          <a class="btn" href="#registro" data-scroll>Reservar mi cupo gratis</a>
+          <div class="hero-meta label">
+            <span><b class="ph">[FECHA]</b></span>
+            <span><b class="ph">[HORA]</b> <span class="ph">[ZONA]</span></span>
+            <span>90 min</span>
+            <span>Cupos: <b class="ph">[CUPOS]</b></span>
+          </div>
+        </div>
+
+        <!-- FOTO 1 — retrato pequeño, cuadrado, mínimo 200×200 px -->
+        <div class="author">
+          <div class="photo">
+            <!-- <img src="fotos/retrato.jpg" alt="Foto de perfil"> -->
+            <span class="hint">Foto</span>
+          </div>
+          <span class="who">
+            <b class="ph">[TU NOMBRE]</b>
+            <span>Nutricionista titulado · Consulta presencial</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- ventana de demostración -->
+      <div class="screen">
+        <div class="screen-bar">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5z" stroke-linejoin="round"></path>
+            <path d="M14 3v5h5M9 13h6M9 17h4" stroke-linecap="round"></path>
+          </svg>
+          <span class="title">
+            <b>Historia clínica · Paciente M. R., 34 años</b>
+            <span>Generada desde las notas de consulta</span>
+          </span>
+          <span class="live"><span class="dot"></span> En vivo</span>
+        </div>
+
+        <div class="screen-tabs" id="tabs">
+          <button type="button" data-go="0" class="is-on">Evaluación inicial</button>
+          <button type="button" data-go="1">Diagnóstico</button>
+          <button type="button" data-go="2">Plan y suplementos</button>
+        </div>
+
+        <div class="screen-body" id="demo" aria-label="Ejemplo de historia clínica generada"></div>
+
+        <div class="screen-foot">
+          <span class="label" id="timer">Generando…</span>
+          <button class="replay" id="replay" type="button">Generar de nuevo</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== MÉTRICAS ===================== -->
+<section class="strip">
+  <div class="wrap">
+    <div class="stat">
+      <div class="big">90 min</div>
+      <div class="lbl">De construcción en vivo, sin cortes de edición</div>
+    </div>
+    <div class="stat">
+      <div class="big">0 líneas</div>
+      <div class="lbl">De código que tengas que escribir o entender</div>
+    </div>
+    <div class="stat">
+      <div class="big ph">[CUPOS]</div>
+      <div class="lbl">Cupos en esta sesión, para poder responder preguntas</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== QUÉ TE LLEVAS ===================== -->
+<section class="band">
+  <div class="wrap">
+    <div class="head reveal">
+      <p class="label">Qué vas a ver</p>
+      <h2>En 90 minutos, esto es lo que te llevas</h2>
+    </div>
+    <div class="cards reveal">
+      <article class="card">
+        <span class="num">01 · LO QUE VES</span>
+        <p>Desde una <strong>pantalla en blanco</strong>, cómo se construye un generador de historias clínicas con IA — paso a paso, sin trucos de edición.</p>
+      </article>
+      <article class="card">
+        <span class="num">02 · LO QUE ENTIENDES</span>
+        <p>Exactamente <strong>qué parte de tu consulta puedes automatizar</strong> sin perder el control clínico sobre tus pacientes.</p>
+      </article>
+      <article class="card">
+        <span class="num">03 · LO QUE TE LLEVAS</span>
+        <p>Sales con <strong class="ph">[RECURSO: plantilla o prompt inicial]</strong> que puedes empezar a usar esa misma semana, solo por estar en vivo.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DOLOR ===================== -->
+<section class="band" style="background:var(--panel);border-block:1px solid var(--line-soft)">
+  <div class="wrap pain">
+    <div class="reveal">
+      <p class="label" style="color:var(--live);margin-bottom:18px">El problema real</p>
+      <h2>Si el tiempo no te alcanza en consulta, no es porque te falte disciplina</h2>
+    </div>
+    <div class="reveal">
+      <ul class="pain-list">
+        <li><span class="x">✕</span><span>Rehaces el mismo formato cada vez que cambias de enfoque.</span></li>
+        <li><span class="x">✕</span><span>Escribes las historias clínicas a mano, paciente por paciente.</span></li>
+        <li><span class="x">✕</span><span>Sabes que la tecnología podría ayudarte, pero no confías en que no te vaya a complicar más de lo que ya está.</span></li>
+      </ul>
+      <p class="quote">No necesitas otro curso teórico de IA. Necesitas verlo funcionar una sola vez, con tus propios ojos, para saber si es para ti.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CREDIBILIDAD ===================== -->
+<section class="band">
+  <div class="wrap">
+    <div class="cred reveal">
+      <!-- FOTO 2 — retrato vertical (4:5), recomendado 800×1000 px.
+           Tú en consulta o con bata: transmite más que cualquier logo. -->
+      <div class="photo photo-portrait">
+        <!-- <img src="fotos/en-consulta.jpg" alt="Nutricionista en su consulta"> -->
+        <span class="hint"><b>Foto 2</b>Retrato vertical 4:5 — tú en tu consulta</span>
+      </div>
+      <div>
+        <p class="label" style="color:var(--blue);margin-bottom:16px">Quien te lo va a mostrar</p>
+        <p>Soy <b>nutricionista titulado</b>, con consulta presencial en Pitalito, Huila. Las herramientas que vas a ver nacieron de mi propia consulta, por necesidad — <b>no las diseñé para vender un taller</b>, las diseñé para sobrevivir mis días de atención.</p>
+        <div class="chips label">
+          <span class="chip">Nutricionista titulado</span>
+          <span class="chip">Consulta presencial activa</span>
+          <span class="chip">Herramientas de uso propio</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOTOS ===================== -->
+<section class="band" style="padding-top:0">
+  <div class="wrap">
+    <div class="head reveal">
+      <p class="label">Así trabajo</p>
+      <h2>Esto no salió de un curso, salió de mi consulta</h2>
+    </div>
+
+    <!-- FOTOS 3, 4 y 5 — reemplaza cada <img> comentado por tu foto.
+         Sugerencia de contenido para que no se vean de banco de imágenes:
+         (1) tú atendiendo, (2) la pantalla con la herramienta en uso,
+         (3) tu escritorio o el consultorio real. -->
+    <div class="gallery reveal">
+      <figure>
+        <div class="photo photo-square">
+          <!-- <img src="fotos/consulta.jpg" alt="Atendiendo a una paciente"> -->
+          <span class="hint"><b>Foto 3</b>Cuadrada 1:1 — atendiendo en consulta</span>
+        </div>
+        <figcaption><span class="ph">[Pie de foto]</span></figcaption>
+      </figure>
+      <figure>
+        <div class="photo photo-square">
+          <!-- <img src="fotos/herramienta.jpg" alt="La herramienta en uso"> -->
+          <span class="hint"><b>Foto 4</b>Cuadrada 1:1 — la herramienta en la pantalla</span>
+        </div>
+        <figcaption><span class="ph">[Pie de foto]</span></figcaption>
+      </figure>
+      <figure>
+        <div class="photo photo-square">
+          <!-- <img src="fotos/consultorio.jpg" alt="El consultorio"> -->
+          <span class="hint"><b>Foto 5</b>Cuadrada 1:1 — tu consultorio real</span>
+        </div>
+        <figcaption><span class="ph">[Pie de foto]</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PARA QUIÉN ===================== -->
+<section class="band" style="padding-top:0">
+  <div class="wrap">
+    <div class="head reveal">
+      <p class="label">Para quién es</p>
+      <h2>Este taller tiene un destinatario muy concreto</h2>
+    </div>
+    <div class="fit reveal">
+      <div class="fit-col fit-yes">
+        <p class="label">Es para ti si</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Atiendes pacientes en consulta y sientes que pasas más tiempo digitando en el computador que mirando al paciente.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Te da curiosidad la IA pero no has visto un ejemplo real, aplicado a nutrición, que te convenza.</span></li>
+        </ul>
+      </div>
+      <div class="fit-col fit-no">
+        <p class="label">No es para ti si</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round"></path></svg><span>Ya tienes un sistema propio que te funciona y no buscas cambiarlo.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round"></path></svg><span>Buscas un taller puramente teórico, sin demostración en vivo.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section class="band" style="padding-top:0">
+  <div class="wrap">
+    <div class="head reveal">
+      <p class="label">Antes de registrarte</p>
+      <h2>Preguntas que me hacen siempre</h2>
+    </div>
+    <div class="faq reveal">
+      <details open>
+        <summary>¿Necesito saber de tecnología para entender el taller?</summary>
+        <div class="a">No. Todo se explica en lenguaje de consulta, no de programador.</div>
+      </details>
+      <details>
+        <summary>¿Es en vivo o grabado?</summary>
+        <div class="a"><span class="ph">[COMPLETAR — recomendado: en vivo, con cupo de repetición limitado]</span></div>
+      </details>
+      <details>
+        <summary>¿Qué pasa si no puedo conectarme a esa hora?</summary>
+        <div class="a"><span class="ph">[COMPLETAR — política de repetición / replay]</span></div>
+      </details>
+      <details>
+        <summary>¿Va a haber una oferta al final?</summary>
+        <div class="a">Sí, al cierre te cuento sobre el programa completo donde diseñas tus propias herramientas paso a paso. Nadie está obligado a comprarlo — el contenido del taller tiene valor por sí solo.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CIERRE + REGISTRO ===================== -->
+<section class="band close">
+  <div class="wrap">
+    <div class="inner reveal">
+      <span class="tag label"><span class="dot"></span> Última llamada</span>
+      <h2><span class="ph">[FECHA]</span> · <span class="ph">[HORA]</span> · Cupos limitados</h2>
+
+      <!-- ficha de registro -->
+      <div class="reg" id="registro">
+        <div class="reg-head">
+          <span class="label">Reserva tu cupo</span>
+          <span class="cupos">CUPOS: <span class="ph">[CUPOS]</span></span>
+        </div>
+        <!-- Conecta tu proveedor: pon la URL en action="" y ajusta los name="". -->
+        <form class="reg-body" id="reg-form" action="" method="post" novalidate>
+          <div class="field">
+            <label for="a-nombre">Nombre y apellido</label>
+            <input id="a-nombre" name="nombre" type="text" autocomplete="name" placeholder="Tu nombre completo" required>
+          </div>
+          <div class="field">
+            <label for="a-correo">Correo electrónico</label>
+            <input id="a-correo" name="email" type="email" autocomplete="email" placeholder="tucorreo@ejemplo.com" required>
+          </div>
+          <div class="field">
+            <label for="a-wa">WhatsApp</label>
+            <input id="a-wa" name="whatsapp" type="tel" autocomplete="tel" placeholder="Para el enlace y el recordatorio" required>
+          </div>
+          <div class="field">
+            <label for="a-consulta">¿Atiendes consulta actualmente?</label>
+            <select id="a-consulta" name="consulta" required>
+              <option value="">Selecciona una opción</option>
+              <option>Sí, consulta presencial</option>
+              <option>Sí, consulta virtual</option>
+              <option>Sí, presencial y virtual</option>
+              <option>Todavía no, estoy empezando</option>
+            </select>
+          </div>
+          <button class="btn" type="submit">Reservar mi cupo gratis</button>
+          <p class="reg-note">Es gratis. Te llega el enlace al correo y al WhatsApp.</p>
+        </form>
+        <div class="reg-done" role="status" aria-live="polite">
+          <span class="tick">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </span>
+          <h3>Cupo reservado</h3>
+          <p>Revisa tu correo: ahí está el enlace de acceso. Te escribo también por WhatsApp el día del taller.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="foot">Construido por un nutricionista, para nutricionistas que atienden pacientes reales todos los días.</p>
+  </div>
+</section>
+
+<div class="sticky" id="sticky">
+  <span class="when">EN VIVO<br><span class="ph">[FECHA]</span> · <span class="ph">[HORA]</span></span>
+  <a class="btn" href="#registro" data-scroll>Reservar cupo</a>
+</div>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  root.classList.add('js');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- demo: la historia clínica se escribe sola ----------
+     Para cambiar el ejemplo, edita el arreglo DOC de abajo.
+     ---------------------------------------------------------------- */
+  var DOC = [
+    {
+      h: 'Evaluación inicial',
+      meta: [['Paciente','Femenino · 34 años'],['Motivo','Control nutricional'],['Antecedente','Diabetes tipo 2']],
+      p: [
+        'Patrón de consumo: 4 comidas al día, apetito bueno, aversiones: ninguna, antojos: ninguno. Presenta estreñimiento.',
+        'Frecuencia de consumo semanal: lácteos 2x, carnes rojas 7x, aves y pescados 7x, huevos 7x, leguminosas 3x, frutas 7x, verduras 7x, cereales y tubérculos 7x, grasas añadidas 7x, fritos 1x.',
+        'Recordatorio de 24 horas. Desayuno: 2 huevos pericos, arepa y plátano asado. Media mañana: fruta y batido de banano, fresa, leche y maní. Almuerzo: ensalada, papa y carne. Media tarde: fruta. Cena: 2 huevos y 1 plátano asado.'
+      ]
+    },
+    {
+      h: 'Diagnóstico nutricional',
+      p: [
+        'Paciente femenino con diagnóstico de diabetes tipo 2 sin complicaciones. Presenta estado nutricional de sobrepeso según indicadores antropométricos (Resolución 2465 de 2016). Sin cambios aparentes en la masa grasa. Sin disminución del apetito. Se identifica una ingesta inadecuada de grupos de alimentos.',
+        'No refiere síntomas gastrointestinales. No presenta signos de sarcopenia ni pérdida de masa muscular aparente. Sin evidencia de edemas. Niega dificultades de deglución o disfagia. Con exámenes de laboratorio alterados: colesterol y triglicéridos.',
+        'Se realiza anamnesis alimentaria, evidenciando una dieta poco variada y equilibrada, fraccionada en 4 tiempos de comida al día, con consumo inadecuado de frutas y verduras, sin consumo de jugos naturales y moderado de preparaciones fritas y alimentos con azúcares añadidos. Tolera adecuadamente los alimentos consumidos. El recordatorio de 24 horas muestra un patrón de comidas irregular.'
+      ]
+    },
+    {
+      h: 'Plan de tratamiento clínico',
+      p: [
+        'Suplementos y productos recomendados: yogur griego, yogur con probióticos y frutos secos.',
+        'Omega 3: cápsulas de 1000 mg cada 24 horas.',
+        'Creatina: 6 g cada 24 horas, con sello CREAPURE, sin azúcar ni maltodextrina.'
+      ]
+    }
+  ];
+
+  var demo = document.getElementById('demo');
+  var replay = document.getElementById('replay');
+  var timerEl = document.getElementById('timer');
+  var tabs = document.getElementById('tabs');
+  var tick = null, clock = null, started = 0;
+
+  var WORDS = DOC.reduce(function(n, s){
+    return n + s.p.join(' ').split(/\s+/).length;
+  }, 0);
+
+  function skeleton(){
+    demo.innerHTML = '';
+    DOC.forEach(function(s, i){
+      var sec = document.createElement('section');
+      sec.dataset.i = i;
+      var h = document.createElement('h4');
+      h.textContent = s.h;
+      sec.appendChild(h);
+      if (s.meta) {
+        var m = document.createElement('div');
+        m.className = 'meta';
+        m.innerHTML = s.meta.map(function(pair){
+          return '<span>' + pair[0] + ': <b>' + pair[1] + '</b></span>';
+        }).join('');
+        sec.appendChild(m);
+      }
+      demo.appendChild(sec);
+    });
+  }
+
+  function fillAll(){
+    skeleton();
+    DOC.forEach(function(s, i){
+      var sec = demo.querySelector('section[data-i="' + i + '"]');
+      s.p.forEach(function(txt){
+        var p = document.createElement('p');
+        p.textContent = txt;
+        sec.appendChild(p);
+      });
+    });
+    timerEl.textContent = 'Generado en 8.4 s · ' + WORDS + ' palabras';
+  }
+
+  function type(){
+    if (tick) { clearTimeout(tick); tick = null; }
+    if (clock) { clearInterval(clock); clock = null; }
+    if (reduced) { fillAll(); return; }
+
+    skeleton();
+    started = Date.now();
+    clock = setInterval(function(){
+      timerEl.textContent = 'Generando… ' + ((Date.now() - started) / 1000).toFixed(1) + ' s';
+    }, 100);
+
+    var si = 0, pi = 0, ci = 0, node = null;
+
+    function step(){
+      if (si >= DOC.length) {
+        clearInterval(clock); clock = null;
+        timerEl.textContent = 'Generado en ' + ((Date.now() - started) / 1000).toFixed(1) + ' s · ' + WORDS + ' palabras';
+        demo.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+      var sec = DOC[si];
+      if (pi >= sec.p.length) { si++; pi = 0; ci = 0; node = null; tick = setTimeout(step, 260); return; }
+
+      var text = sec.p[pi];
+      if (!node) {
+        node = document.createElement('p');
+        demo.querySelector('section[data-i="' + si + '"]').appendChild(node);
+      }
+      if (ci < text.length) {
+        ci += Math.max(2, Math.round(text.length / 34));
+        node.textContent = text.slice(0, ci);
+        tick = setTimeout(step, 16);
+      } else {
+        node.textContent = text;
+        demo.scrollTop = demo.scrollHeight;
+        pi++; ci = 0; node = null;
+        tick = setTimeout(step, 150);
+      }
+    }
+    step();
+  }
+
+  /* pestañas: llevan al bloque correspondiente del documento */
+  tabs.addEventListener('click', function(ev){
+    var b = ev.target.closest('button[data-go]');
+    if (!b || !demo.firstChild) return;
+    var sec = demo.querySelector('section[data-i="' + b.dataset.go + '"]');
+    if (sec) { demo.scrollTo({ top: sec.offsetTop - demo.firstChild.offsetTop, behavior:'smooth' }); }
+  });
+  demo.addEventListener('scroll', function(){
+    if (!demo.firstChild) return;
+    var secs = demo.querySelectorAll('section');
+    var top = demo.scrollTop + 40, active = 0;
+    secs.forEach(function(s, i){ if (s.offsetTop - demo.firstChild.offsetTop <= top) active = i; });
+    tabs.querySelectorAll('button').forEach(function(b, i){ b.classList.toggle('is-on', i === active); });
+  });
+
+  if ('IntersectionObserver' in window) {
+    var once = new IntersectionObserver(function(e){
+      if (e[0].isIntersecting) { type(); once.disconnect(); }
+    }, { threshold:.25 });
+    once.observe(demo);
+  } else { fillAll(); }
+  replay.addEventListener('click', type);
+
+  /* ---------- revelado ---------- */
+  var items = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+      });
+    }, { rootMargin:'0px 0px -8% 0px', threshold:.08 });
+    items.forEach(function(el){ io.observe(el); });
+  } else { items.forEach(function(el){ el.classList.add('is-in'); }); }
+
+  /* ---------- scroll + barra ---------- */
+  var card = document.getElementById('registro');
+  document.querySelectorAll('[data-scroll]').forEach(function(a){
+    a.addEventListener('click', function(ev){
+      var t = document.querySelector(a.getAttribute('href'));
+      if (!t) return;
+      ev.preventDefault();
+      t.scrollIntoView({ behavior:'smooth', block:'center' });
+      var f = t.querySelector('input');
+      if (f) setTimeout(function(){ f.focus({ preventScroll:true }); }, 540);
+    });
+  });
+  var bar = document.getElementById('sticky');
+  if (bar && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function(e){
+      bar.classList.toggle('is-on', !e[0].isIntersecting && window.scrollY > 600);
+    }, { threshold:0 }).observe(card);
+  }
+
+  /* ---------- envío ---------- */
+  var form = document.getElementById('reg-form');
+  form.addEventListener('submit', function(ev){
+    if (!form.checkValidity()) { form.reportValidity(); ev.preventDefault(); return; }
+    if (!form.getAttribute('action')) {
+      ev.preventDefault();
+      card.classList.add('is-done');
+      card.scrollIntoView({ behavior:'smooth', block:'center' });
+    }
+  });
+})();
+</script>
