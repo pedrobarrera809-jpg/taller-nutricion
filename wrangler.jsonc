@@ -1,0 +1,11 @@
+{
+  // Configuración del Worker que sirve la landing page.
+  // Los archivos de la carpeta "public" se publican tal cual:
+  // public/index.html  ->  https://registro.institutodenutricionistas.com
+  "name": "taller-nutricion",
+  "compatibility_date": "2025-01-01",
+  "assets": {
+    "directory": "./public",
+    "not_found_handling": "single-page-application"
+  }
+}
