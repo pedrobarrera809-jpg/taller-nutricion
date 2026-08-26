@@ -3,9 +3,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Taller gratuito en vivo para nutricionistas: armo desde cero un generador de historias clínicas con IA, sin una sola línea de código.">
-<meta name="theme-color" content="#060B12">
+<meta name="theme-color" content="#0A0E27">
 <link rel="canonical" href="https://registro.institutodenutricionistas.com/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23060B12'/%3E%3Ccircle cx='16' cy='16' r='6.5' fill='%23FF4D4D'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230A0E27'/%3E%3Ccircle cx='16' cy='16' r='6.5' fill='%23FF4444'/%3E%3C/svg%3E">
 
 <!-- Cómo se ve el enlace cuando alguien lo comparte por WhatsApp, Instagram o Facebook -->
 <meta property="og:type" content="website">
@@ -25,34 +25,76 @@
 <style>
 /* ============================================================
    ESTILO A — "EN VIVO"
-   Dirección: pantalla encendida. Oscuro, cinematográfico, con la
-   herramienta escribiéndose sola en el hero. Un solo tema (oscuro),
-   pintado explícitamente. Cada color tiene un trabajo:
-   azul = interfaz, ámbar = acción, rojo = señal de directo.
+   Pantalla encendida: oscuro, cinematográfico, con la herramienta
+   escribiéndose sola en el hero. Tema único (oscuro), pintado
+   explícitamente.
+
+   DISCIPLINA DE COLOR — cada acento tiene un solo trabajo:
+     cian    = interfaz (enlaces, etiquetas, bordes vivos, datos)
+     naranja = acción   (SOLO botones: si brilla naranja, se hace clic)
+     dorado  = la promesa ("con IA" del titular, nada más)
+     rojo    = señal de directo (el punto que late)
+   Romper esta regla es lo que hace que una página se sienta
+   ruidosa en vez de brillante.
    ============================================================ */
 :root{
-  --bg:#060B12;
-  --panel:#0B1622;
-  --panel-2:#0F1E2D;
-  --line:#182C3E;
-  --line-soft:#122333;
-  --ink:#EDF4F9;
-  --muted:#8AA4B8;
-  --blue:#4A93FF;
-  --blue-soft:rgba(74,147,255,.12);
-  --amber:#FFC24B;
-  --amber-ink:#1A1206;
-  --live:#FF4D4D;
+  /* fondos */
+  --bg:#0A0E27;
+  --bg-deep:#070A1C;
+  --panel:#0F172A;
+  --panel-2:#141F38;
+  --line:#22304F;
+  --line-soft:#1A2540;
+
+  /* texto */
+  --ink:#FFFFFF;
+  --muted:#B0D4FF;
+  --muted-2:#88C7FF;
+
+  /* acentos */
+  --cyan:#00D9FF;
+  --cyan-deep:#0099FF;
+  --cyan-soft:rgba(0,217,255,.10);
+  --cyan-glow:rgba(0,217,255,.15);
+  --cyan-glow-hi:rgba(0,217,255,.25);
+  --orange:#FF6B35;
+  --orange-hi:#FF8659;
+  --orange-ink:#1A0A03;
+  --gold:#FFD700;
+  --live:#FF4444;
+
+  /* alias heredados: mantienen funcionando el CSS antiguo */
+  --blue:var(--cyan);
+  --blue-soft:var(--cyan-soft);
+  --amber:var(--orange);
+  --amber-ink:var(--orange-ink);
+
+  --grad-line:linear-gradient(135deg,var(--cyan),var(--cyan-deep));
   --maxw:1240px;
   --pad:clamp(20px,5vw,60px);
 }
 *,*::before,*::after{box-sizing:border-box}
 body{
-  margin:0;background:var(--bg);color:var(--ink);
+  margin:0;color:var(--ink);
+  background:var(--bg);
+  background-image:
+    radial-gradient(110% 60% at 50% 0%, #142046 0%, transparent 62%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
+  background-attachment:fixed;
   font-family:Archivo,"Segoe UI",Helvetica,Arial,sans-serif;
   font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;
 }
 h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.03em;line-height:1.02;text-wrap:balance}
+
+/* Titulares con degradado blanco → azul claro y un halo suave detrás.
+   El halo va con filter (no text-shadow) porque el texto está
+   recortado sobre el degradado y una sombra normal se vería sólida. */
+h1,h2{
+  background:linear-gradient(175deg,#FFFFFF 30%,#B0D4FF 100%);
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 0 34px rgba(0,217,255,.18));
+}
 h1{font-size:clamp(2.5rem,6.4vw,5rem)}
 h2{font-size:clamp(2rem,4.4vw,3.4rem)}
 h3{font-size:1.15rem;letter-spacing:-.01em;line-height:1.25}
@@ -68,22 +110,24 @@ p{margin:0}
   padding:7px 14px;border:1px solid var(--line);border-radius:999px;
   background:var(--panel);color:var(--muted);
 }
-.dot{width:7px;height:7px;border-radius:50%;background:var(--live);flex:none;box-shadow:0 0 0 0 rgba(255,77,77,.6);animation:pulse 2.4s infinite}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--live);flex:none;box-shadow:0 0 0 0 rgba(255,68,68,.6);animation:pulse 2.4s infinite}
 @keyframes pulse{
-  0%{box-shadow:0 0 0 0 rgba(255,77,77,.55)}
-  70%{box-shadow:0 0 0 9px rgba(255,77,77,0)}
-  100%{box-shadow:0 0 0 0 rgba(255,77,77,0)}
+  0%{box-shadow:0 0 0 0 rgba(255,68,68,.55)}
+  70%{box-shadow:0 0 0 9px rgba(255,68,68,0)}
+  100%{box-shadow:0 0 0 0 rgba(255,68,68,0)}
 }
 
+/* El botón es lo único naranja de la página: si brilla así, se hace clic. */
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:10px;width:100%;
   padding:18px 28px;border:0;border-radius:6px;cursor:pointer;
-  background:var(--amber);color:var(--amber-ink);
+  background:linear-gradient(135deg,var(--orange-hi),var(--orange));
+  color:var(--orange-ink);
   font-family:Archivo,sans-serif;font-size:1.05rem;font-weight:700;letter-spacing:-.01em;
-  text-decoration:none;transition:transform .16s ease, box-shadow .16s ease, background .16s ease;
-  box-shadow:0 0 0 0 rgba(255,194,75,.35);
+  text-decoration:none;transition:transform .16s ease, box-shadow .16s ease, filter .16s ease;
+  box-shadow:0 6px 24px -8px rgba(255,107,53,.55), 0 0 0 1px rgba(255,134,89,.35) inset;
 }
-.btn:hover{background:#FFD37A;transform:translateY(-1px);box-shadow:0 10px 30px -12px rgba(255,194,75,.65)}
+.btn:hover{filter:brightness(1.08);transform:translateY(-2px);box-shadow:0 14px 38px -10px rgba(255,107,53,.75), 0 0 0 1px rgba(255,134,89,.5) inset}
 .btn:active{transform:translateY(0)}
 .btn-wide{width:auto;min-width:min(360px,100%)}
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:3px}
@@ -93,7 +137,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
 .hero::before{
   content:"";position:absolute;top:-30%;left:50%;transform:translateX(-50%);
   width:min(1400px,150vw);height:900px;pointer-events:none;
-  background:radial-gradient(50% 50% at 50% 50%, rgba(74,147,255,.16), transparent 70%);
+  background:radial-gradient(50% 50% at 50% 50%, rgba(0,217,255,.20), transparent 70%);
 }
 .hero::after{
   content:"";position:absolute;inset:0;pointer-events:none;
@@ -115,17 +159,26 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
 .hero-grid{display:grid;gap:clamp(40px,5vw,64px);align-items:center}
 @media (min-width:1040px){.hero-grid{grid-template-columns:1fr 1.02fr}}
 .hero-copy{display:flex;flex-direction:column;gap:26px;max-width:640px}
-.hero-copy h1 .hl{color:var(--amber)}
+/* "con IA" — el dorado aparece aquí y en ningún otro lugar de la página.
+   text-fill-color anula el recorte del degradado del titular. */
+.hero-copy h1 .hl{
+  color:var(--gold);-webkit-text-fill-color:var(--gold);
+  filter:drop-shadow(0 0 26px rgba(255,215,0,.35));
+}
 .hero-lead{font-size:clamp(1.05rem,1.5vw,1.2rem);color:var(--muted);max-width:50ch}
 .hero-actions{display:flex;flex-direction:column;gap:14px;max-width:420px}
 .hero-meta{display:flex;flex-wrap:wrap;gap:8px 20px;color:var(--muted);align-items:center}
 .hero-meta b{color:var(--ink);font-weight:600}
 
 /* ---------------- VENTANA DEMO ---------------- */
+/* Borde con degradado: el fondo del panel se pinta hasta el padding y
+   el degradado ocupa el área del borde. Por eso border:1px transparent. */
 .screen{
-  border:1px solid var(--line);border-radius:10px;overflow:hidden;
-  background:var(--panel);
-  box-shadow:0 40px 80px -40px rgba(0,0,0,.9), 0 0 0 1px rgba(74,147,255,.06);
+  border:1px solid transparent;border-radius:12px;overflow:hidden;
+  background:
+    linear-gradient(var(--panel),var(--panel)) padding-box,
+    var(--grad-line) border-box;
+  box-shadow:0 40px 80px -40px rgba(0,0,0,.9), 0 0 34px var(--cyan-glow);
 }
 .screen-bar{
   display:flex;align-items:center;gap:12px;
@@ -226,7 +279,13 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
   .stat:first-child{padding-left:0}
   .stat:last-child{border-right:0;padding-right:0}
 }
-.stat .big{font-size:clamp(1.9rem,3.4vw,2.6rem);font-weight:700;letter-spacing:-.03em;line-height:1.05}
+.stat .big{
+  font-size:clamp(1.9rem,3.4vw,2.6rem);font-weight:700;letter-spacing:-.03em;line-height:1.05;
+  background:linear-gradient(170deg,#FFFFFF 25%,var(--cyan) 115%);
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 0 22px rgba(0,217,255,.22));
+}
 .stat .lbl{color:var(--muted);margin-top:6px;font-size:.95rem}
 
 /* ---------------- SECCIONES ---------------- */
@@ -236,11 +295,15 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
 .cards{display:grid;gap:18px}
 @media (min-width:880px){.cards{grid-template-columns:repeat(3,1fr)}}
 .card{
-  background:var(--panel);border:1px solid var(--line);border-radius:9px;
+  background:var(--panel);border:1px solid var(--line);border-radius:10px;
   padding:26px 24px 30px;display:flex;flex-direction:column;gap:14px;
-  transition:border-color .2s ease, transform .2s ease;
+  box-shadow:0 0 20px var(--cyan-glow);
+  transition:border-color .2s ease, transform .2s ease, box-shadow .2s ease;
 }
-.card:hover{border-color:var(--blue);transform:translateY(-2px)}
+.card:hover{
+  border-color:var(--cyan);transform:translateY(-3px);
+  box-shadow:0 0 30px var(--cyan-glow-hi);
+}
 .card .num{
   font-family:Archivo,"Segoe UI",Arial,sans-serif;font-size:.72rem;letter-spacing:.14em;
   color:var(--blue);
@@ -261,7 +324,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
 .pain-list .x{color:var(--live);flex:none;font-family:Archivo,"Segoe UI",Arial,sans-serif;font-size:.9rem;line-height:1.7}
 .quote{
   margin-top:30px;padding:24px 26px;border-left:3px solid var(--amber);
-  background:linear-gradient(90deg,rgba(255,194,75,.08),transparent 70%);
+  background:linear-gradient(90deg,rgba(0,217,255,.10),transparent 70%);
   font-size:clamp(1.12rem,1.9vw,1.4rem);line-height:1.45;font-weight:500;letter-spacing:-.015em;
   max-width:48ch;
 }
@@ -290,7 +353,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
 .fit{display:grid;gap:18px}
 @media (min-width:880px){.fit{grid-template-columns:1fr 1fr}}
 .fit-col{border-radius:10px;padding:28px 26px 32px;display:flex;flex-direction:column;gap:20px}
-.fit-yes{background:var(--blue-soft);border:1px solid rgba(74,147,255,.28)}
+.fit-yes{background:var(--cyan-soft);border:1px solid rgba(0,217,255,.30);box-shadow:0 0 24px var(--cyan-glow)}
 .fit-no{background:var(--panel);border:1px solid var(--line)}
 .fit-yes .label{color:var(--blue)}
 .fit-no .label{color:var(--muted)}
@@ -317,9 +380,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
 
 /* formulario */
 .reg{
-  background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;
+  border:1px solid transparent;border-radius:14px;overflow:hidden;
+  background:
+    linear-gradient(var(--panel),var(--panel)) padding-box,
+    var(--grad-line) border-box;
   max-width:520px;margin-inline:auto;scroll-margin-top:24px;
-  box-shadow:0 40px 90px -50px rgba(0,0,0,.95);
+  box-shadow:0 40px 90px -50px rgba(0,0,0,.95), 0 0 40px var(--cyan-glow-hi);
 }
 .reg-head{padding:20px 26px;border-bottom:1px solid var(--line);background:var(--panel-2);display:flex;justify-content:space-between;align-items:center;gap:12px}
 .reg-head .label{color:var(--blue)}
@@ -338,7 +404,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
 .reg-done{display:none;padding:44px 30px;flex-direction:column;align-items:center;gap:14px;text-align:center}
 .reg.is-done .reg-body{display:none}
 .reg.is-done .reg-done{display:flex}
-.reg-done .tick{width:50px;height:50px;border-radius:50%;background:var(--blue-soft);border:1px solid rgba(74,147,255,.35);color:var(--blue);display:grid;place-items:center}
+.reg-done .tick{width:50px;height:50px;border-radius:50%;background:var(--cyan-soft);border:1px solid rgba(0,217,255,.4);color:var(--cyan);display:grid;place-items:center;box-shadow:0 0 26px var(--cyan-glow-hi)}
 .reg-done p{color:var(--muted);max-width:34ch}
 
 /* cierre */
@@ -360,6 +426,14 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
 .sticky .when{font-family:Archivo,"Segoe UI",Arial,sans-serif;font-size:.68rem;letter-spacing:.06em;color:var(--muted);line-height:1.4}
 .sticky .btn{width:auto;padding:12px 20px;font-size:.92rem;white-space:nowrap}
 @media (min-width:900px){.sticky{display:none}}
+
+/* Micro-etiquetas en el azul claro secundario, para separarlas del cuerpo */
+.field label,.reg-head .cupos,.screen-tabs button,.replay,
+.chip,.gallery figcaption,.photo .hint,.sticky .when{color:var(--muted-2)}
+
+/* El panel del formulario y la ventana del generador se apoyan sobre el
+   fondo más profundo para que el borde con degradado se lea mejor */
+.field input,.field select{background:var(--bg-deep)}
 
 .js .reveal{opacity:0;transform:translateY(16px)}
 .js .reveal.is-in{opacity:1;transform:none;transition:opacity .65s ease,transform .65s cubic-bezier(.2,.7,.3,1)}
