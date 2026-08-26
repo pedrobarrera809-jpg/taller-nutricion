@@ -251,7 +251,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
 .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .photo .hint{color:var(--muted);font-size:.76rem;line-height:1.5;max-width:24ch}
 .photo .hint b{display:block;color:var(--blue);font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px}
-.photo-portrait{aspect-ratio:4/5}
+/* Cuando el hueco ya tiene foto, el borde punteado desaparece */
+.photo.has-img{border:1px solid var(--line);padding:0;box-shadow:0 0 22px var(--cyan-glow)}
+.photo-portrait{aspect-ratio:3/4}
 .photo-square{aspect-ratio:1/1}
 .photo-wide{aspect-ratio:3/2}
 
@@ -479,9 +481,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
 
         <!-- FOTO 1 — retrato pequeño, cuadrado, mínimo 200×200 px -->
         <div class="author">
-          <div class="photo">
-            <!-- <img src="fotos/retrato.jpg" alt="Foto de perfil"> -->
-            <span class="hint">Foto</span>
+          <div class="photo has-img">
+            <img src="pedro-avatar.jpg" alt="Pedro Barrera, nutricionista dietista" width="240" height="240">
           </div>
           <span class="who">
             <b>Pedro Barrera</b>
@@ -587,9 +588,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
     <div class="cred reveal">
       <!-- FOTO 2 — retrato vertical (4:5), recomendado 800×1000 px.
            Tú en consulta o con bata: transmite más que cualquier logo. -->
-      <div class="photo photo-portrait">
-        <!-- <img src="fotos/en-consulta.jpg" alt="Nutricionista en su consulta"> -->
-        <span class="hint"><b>Foto 2</b>Retrato vertical 4:5 — tú en tu consulta</span>
+      <div class="photo photo-portrait has-img">
+        <img src="pedro.jpg" alt="Pedro Barrera, nutricionista dietista, en su consulta" width="660" height="880" loading="lazy">
       </div>
       <div>
         <p class="label" style="color:var(--blue);margin-bottom:16px">Quien te lo va a mostrar</p>
@@ -620,11 +620,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
          (3) tu escritorio o el consultorio real. -->
     <div class="gallery reveal">
       <figure>
-        <div class="photo photo-square">
-          <!-- <img src="fotos/consulta.jpg" alt="Atendiendo a una paciente"> -->
-          <span class="hint"><b>Foto 3</b>Cuadrada 1:1 — atendiendo en consulta</span>
+        <div class="photo photo-square has-img">
+          <img src="consulta.jpg" alt="Toma de circunferencia de cintura durante una valoración antropométrica" width="800" height="800" loading="lazy">
         </div>
-        <figcaption><span class="ph">[Pie de foto]</span></figcaption>
+        <figcaption>Valoración antropométrica: circunferencia de cintura.</figcaption>
       </figure>
       <figure>
         <div class="photo photo-square">
