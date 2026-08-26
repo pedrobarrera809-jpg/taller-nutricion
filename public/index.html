@@ -275,6 +275,14 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
 @media (min-width:860px){.cred{grid-template-columns:minmax(0,260px) 1fr}}
 .cred p{font-size:clamp(1.08rem,1.7vw,1.3rem);color:var(--muted);max-width:62ch}
 .cred p b{color:var(--ink);font-weight:600}
+.cred .cred-name{
+  font-size:clamp(1.5rem,2.6vw,2rem);font-weight:700;letter-spacing:-.03em;
+  line-height:1.1;color:var(--ink);margin-bottom:4px;
+}
+.cred .cred-role{
+  font-size:clamp(.95rem,1.3vw,1.05rem);color:var(--muted);margin-bottom:18px;
+}
+.cred .cred-role b{color:var(--blue);font-weight:600}
 .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
 .chip{padding:6px 12px;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
 
@@ -402,8 +410,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
             <span class="hint">Foto</span>
           </div>
           <span class="who">
-            <b class="ph">[TU NOMBRE]</b>
-            <span>Nutricionista titulado · Consulta presencial</span>
+            <b>Pedro Barrera</b>
+            <span>Nutricionista Dietista</span>
           </span>
         </div>
       </div>
@@ -475,7 +483,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
       </article>
       <article class="card">
         <span class="num">03 · LO QUE TE LLEVAS</span>
-        <p>Sales con <strong class="ph">[RECURSO: plantilla o prompt inicial]</strong> que puedes empezar a usar esa misma semana, solo por estar en vivo.</p>
+        <p>Sales con el <strong>generador de historias clínicas montado en la web</strong>, listo para que empieces a usarlo esa misma semana — solo por estar en vivo.</p>
       </article>
     </div>
   </div>
@@ -511,10 +519,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
       </div>
       <div>
         <p class="label" style="color:var(--blue);margin-bottom:16px">Quien te lo va a mostrar</p>
-        <p>Soy <b>nutricionista titulado</b>, con consulta presencial en Pitalito, Huila. Las herramientas que vas a ver nacieron de mi propia consulta, por necesidad — <b>no las diseñé para vender un taller</b>, las diseñé para sobrevivir mis días de atención.</p>
+        <p class="cred-name">Pedro Barrera</p>
+        <p class="cred-role">Nutricionista Dietista · <b>+1000 pacientes</b> en nutrición clínica y deportiva</p>
+        <p>Las herramientas que vas a ver nacieron de una necesidad real — la de mi propia consulta. <b>No las diseñé para vender un taller</b>; las diseñé para sobrevivir mis días de atención. Por eso decidí compartirlas con otros profesionales.</p>
         <div class="chips label">
-          <span class="chip">Nutricionista titulado</span>
-          <span class="chip">Consulta presencial activa</span>
+          <span class="chip">Nutrición clínica</span>
+          <span class="chip">Nutrición deportiva</span>
           <span class="chip">Herramientas de uso propio</span>
         </div>
       </div>
