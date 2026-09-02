@@ -258,7 +258,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
 .photo-wide{aspect-ratio:3/2}
 
 .gallery{display:grid;gap:14px}
-@media (min-width:760px){.gallery{grid-template-columns:repeat(3,1fr)}}
+/* Dos fotos: se acota el ancho y se centra para que no crezcan de más.
+   Si algún día vuelven a ser tres, cambia el 2 por 3 y quita max-width/margin. */
+@media (min-width:760px){.gallery{grid-template-columns:repeat(2,1fr);max-width:860px;margin-inline:auto}}
 .gallery figure{margin:0;display:flex;flex-direction:column;gap:10px}
 .gallery figcaption{color:var(--muted);font-size:.85rem}
 
@@ -571,7 +573,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
       <!-- FOTO 2 — retrato vertical (4:5), recomendado 800×1000 px.
            Tú en consulta o con bata: transmite más que cualquier logo. -->
       <div class="photo photo-portrait has-img">
-        <img src="pedro.jpg" alt="Pedro Barrera, nutricionista dietista, en su consulta" width="660" height="880" loading="lazy">
+        <img src="pedro-retrato.jpg" alt="Pedro Barrera, nutricionista dietista" width="800" height="1000" loading="lazy">
       </div>
       <div>
         <p class="label" style="color:var(--blue);margin-bottom:16px">Quien te lo va a mostrar</p>
@@ -595,10 +597,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
       <h2>Esto no salió de un curso, salió de mi consulta</h2>
     </div>
 
-    <!-- FOTOS 3, 4 y 5 — reemplaza cada <img> comentado por tu foto.
-         Sugerencia de contenido para que no se vean de banco de imágenes:
-         (1) tú atendiendo, (2) la pantalla con la herramienta en uso,
-         (3) tu escritorio o el consultorio real. -->
+    <!-- Galería de dos fotos cuadradas (1:1): tú atendiendo y la herramienta
+         en uso. Para agregar una tercera, duplica un <figure> y ajusta la
+         regla .gallery del CSS. -->
     <div class="gallery reveal">
       <figure>
         <div class="photo photo-square has-img">
@@ -606,18 +607,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
         </div>
       </figure>
       <figure>
-        <div class="photo photo-square">
-          <!-- <img src="fotos/herramienta.jpg" alt="La herramienta en uso"> -->
-          <span class="hint"><b>Foto 4</b>Cuadrada 1:1 — la herramienta en la pantalla</span>
+        <div class="photo photo-square has-img">
+          <img src="trabajando.jpg" alt="Pedro Barrera trabajando en su escritorio con la herramienta abierta en el computador" width="800" height="800" loading="lazy">
         </div>
-        <figcaption><span class="ph">[Pie de foto]</span></figcaption>
-      </figure>
-      <figure>
-        <div class="photo photo-square">
-          <!-- <img src="fotos/consultorio.jpg" alt="El consultorio"> -->
-          <span class="hint"><b>Foto 5</b>Cuadrada 1:1 — tu consultorio real</span>
-        </div>
-        <figcaption><span class="ph">[Pie de foto]</span></figcaption>
       </figure>
     </div>
   </div>
@@ -727,7 +719,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
       </div>
     </div>
 
-    <p class="foot">Construido por un nutricionista, para nutricionistas que atienden pacientes reales todos los días.</p>
+    <p class="foot">Construido por Pedro Barrera, Nutricionista.</p>
   </div>
 </section>
 
