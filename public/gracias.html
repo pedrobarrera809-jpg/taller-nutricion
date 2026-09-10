@@ -90,23 +90,6 @@ p{margin:0}
 .btn-ghost:hover{color:var(--cyan);border-color:var(--cyan);filter:none}
 a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:3px}
 
-/* micro-encuesta */
-.q{display:flex;flex-direction:column;gap:11px}
-.q > p{color:var(--ink);font-weight:600;font-size:.98rem}
-.opts{display:flex;flex-wrap:wrap;gap:9px}
-.opt{position:relative}
-.opt input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer}
-.opt span{
-  display:block;padding:10px 15px;border:1px solid var(--line);border-radius:999px;
-  background:var(--bg-deep);color:var(--muted);font-size:.9rem;transition:all .15s ease;
-}
-.opt input:checked + span{border-color:var(--cyan);color:var(--cyan);background:var(--cyan-soft);box-shadow:0 0 18px var(--cyan-glow)}
-.opt input:focus-visible + span{outline:2px solid var(--cyan);outline-offset:2px}
-
-.survey-done{display:none;align-items:center;gap:11px;color:var(--cyan);font-weight:600}
-.survey.is-done .q,.survey.is-done .btn{display:none}
-.survey.is-done .survey-done{display:flex}
-
 /* video */
 .video{aspect-ratio:16/9;background:var(--panel-2);border:1px dashed var(--line);border-radius:9px;
   display:grid;place-items:center;text-align:center;padding:20px;color:var(--muted-2);font-size:.82rem;line-height:1.5}
@@ -167,51 +150,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
     </div>
   </div>
 
-  <!-- ============ 3 · MICRO-ENCUESTA DE 2 PREGUNTAS ============ -->
-  <div class="card plain">
-    <div class="card-head">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
-        <path d="M4 19V9M10 19V5M16 19v-7M22 19H2" stroke-linecap="round"></path>
-      </svg>
-      <span class="label">2 preguntas · 15 segundos</span>
-    </div>
-    <div class="card-body">
-      <p>Con esto preparo el taller alrededor de lo que de verdad te está quitando tiempo.</p>
-
-      <form class="survey" id="survey" novalidate>
-        <div class="card-body" style="padding:0;gap:22px">
-
-          <div class="q">
-            <p>¿Atiendes consulta actualmente?</p>
-            <div class="opts">
-              <label class="opt"><input type="radio" name="consulta" value="Presencial" required><span>Presencial</span></label>
-              <label class="opt"><input type="radio" name="consulta" value="Virtual"><span>Virtual</span></label>
-              <label class="opt"><input type="radio" name="consulta" value="Ambas"><span>Ambas</span></label>
-              <label class="opt"><input type="radio" name="consulta" value="Todavía no"><span>Todavía no</span></label>
-            </div>
-          </div>
-
-          <div class="q">
-            <p>¿Qué te quita más tiempo hoy?</p>
-            <div class="opts">
-              <label class="opt"><input type="radio" name="cuello" value="Historias clínicas" required><span>Historias clínicas</span></label>
-              <label class="opt"><input type="radio" name="cuello" value="Planes y minutas"><span>Planes y minutas</span></label>
-              <label class="opt"><input type="radio" name="cuello" value="Seguimiento entre consultas"><span>Seguimiento entre consultas</span></label>
-              <label class="opt"><input type="radio" name="cuello" value="Cobrar y agendar"><span>Cobrar y agendar</span></label>
-            </div>
-          </div>
-
-          <button class="btn btn-ghost" type="submit">Enviar respuestas</button>
-          <p class="survey-done">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-            Listo, gracias. Nos vemos en el taller.
-          </p>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- ============ 4 · VIDEO DE 60 SEGUNDOS ============ -->
+  <!-- ============ 3 · VIDEO DE 60 SEGUNDOS ============ -->
   <div class="card plain">
     <div class="card-head">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
@@ -247,10 +186,7 @@ var CONFIG = {
   eventStart: '',
   eventEnd:   '',
   eventTitle: 'Taller gratuito: IA para nutricionistas',
-  eventDetail:'Enlace de acceso: te llega por correo y por WhatsApp antes de empezar.',
-
-  // Mismo destino que usa el formulario de la landing (ver index.html).
-  endpoint: '/api/registro'
+  eventDetail:'Enlace de acceso: te llega por correo y por WhatsApp antes de empezar.'
 };
 
 (function(){
@@ -277,31 +213,10 @@ var CONFIG = {
     wa.addEventListener('click', function(ev){ ev.preventDefault(); });
   }
 
-  /* ---------- micro-encuesta ----------
-     El correo viaja en la URL (?email=) desde el formulario de registro,
-     para poder pegar la respuesta al contacto correcto en GoHighLevel. */
-  var survey = document.getElementById('survey');
-  survey.addEventListener('submit', function(ev){
-    ev.preventDefault();
-    if (!survey.checkValidity()) { survey.reportValidity(); return; }
-
-    var params = new URLSearchParams(location.search);
-    var payload = {
-      email:    params.get('email') || '',
-      consulta: survey.consulta.value,
-      cuello:   survey.cuello.value,
-      origen:   'encuesta-gracias'
-    };
-
-    if (CONFIG.endpoint) {
-      fetch(CONFIG.endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      }).catch(function(){ /* si falla, no se le muestra error al usuario */ });
-    }
-
-    survey.classList.add('is-done');
-  });
+  /* La micro-encuesta de 2 preguntas se retiró el 9 de septiembre de 2026.
+     El trigger Inbound Webhook de GoHighLevel cobra por ejecución, y la
+     encuesta disparaba una segunda por cada registrado. Si algún día se
+     migra a la vía del token (API v2), volver a ponerla no cuesta nada:
+     está en el historial de git. */
 })();
 </script>
