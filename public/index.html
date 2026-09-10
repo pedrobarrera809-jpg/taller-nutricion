@@ -419,6 +419,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
 .reg-head .label{color:var(--blue)}
 .reg-head .cupos{font-family:Archivo,"Segoe UI",Arial,sans-serif;font-size:.72rem;color:var(--muted);letter-spacing:.08em}
 .reg-body{padding:26px;text-align:left}
+.field-row{display:flex;flex-direction:column;gap:0}
+@media (min-width:480px){.field-row{flex-direction:row;gap:14px}.field-row .field{flex:1}}
 .field{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
 .field label{font-family:Archivo,"Segoe UI",Arial,sans-serif;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .field input,.field select{
@@ -529,9 +531,15 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
           <span class="cupos">CUPOS: <span class="ph">[CUPOS]</span></span>
         </div>
         <form class="reg-body reg-form" data-origen="hero" novalidate>
-          <div class="field">
-            <label for="h-nombre">Nombre y apellido</label>
-            <input id="h-nombre" name="nombre" type="text" autocomplete="name" placeholder="Tu nombre completo" required>
+          <div class="field-row">
+            <div class="field">
+              <label for="h-nombre">Nombre</label>
+              <input id="h-nombre" name="nombre" type="text" autocomplete="given-name" placeholder="Tu nombre" required>
+            </div>
+            <div class="field">
+              <label for="h-apellido">Apellido</label>
+              <input id="h-apellido" name="apellido" type="text" autocomplete="family-name" placeholder="Tu apellido" required>
+            </div>
           </div>
           <div class="field">
             <label for="h-correo">Correo electrónico</label>
@@ -786,9 +794,15 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
           <span class="cupos">CUPOS: <span class="ph">[CUPOS]</span></span>
         </div>
         <form class="reg-body reg-form" data-origen="cierre" novalidate>
-          <div class="field">
-            <label for="f-nombre">Nombre y apellido</label>
-            <input id="f-nombre" name="nombre" type="text" autocomplete="name" placeholder="Tu nombre completo" required>
+          <div class="field-row">
+            <div class="field">
+              <label for="f-nombre">Nombre</label>
+              <input id="f-nombre" name="nombre" type="text" autocomplete="given-name" placeholder="Tu nombre" required>
+            </div>
+            <div class="field">
+              <label for="f-apellido">Apellido</label>
+              <input id="f-apellido" name="apellido" type="text" autocomplete="family-name" placeholder="Tu apellido" required>
+            </div>
           </div>
           <div class="field">
             <label for="f-correo">Correo electrónico</label>
@@ -898,12 +912,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
         return;
       }
 
-      var nombre = form.nombre.value.trim();
-      var corte  = nombre.indexOf(' ');
+      var nombre   = form.nombre.value.trim();
+      var apellido = form.apellido.value.trim();
       var datos = {
-        nombre:     nombre,
-        firstName:  corte > 0 ? nombre.slice(0, corte) : nombre,
-        lastName:   corte > 0 ? nombre.slice(corte + 1).trim() : '',
+        nombre:     (nombre + ' ' + apellido).trim(),
+        firstName:  nombre,
+        lastName:   apellido,
         email:      form.email.value.trim().toLowerCase(),
         phone:      telefono,
         origen:     form.dataset.origen,           // "hero" o "cierre"
