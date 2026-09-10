@@ -1,0 +1,13 @@
+node_modules/
+.wrangler/
+
+# Secretos locales para "wrangler dev". NUNCA subir a git:
+# aquí es donde va el webhook o el token de GoHighLevel al probar.
+.dev.vars
+.dev.vars.*
+
+# Copias de versiones anteriores de la landing
+*.bak
+
+# Ajustes locales de Claude Code
+.claude/

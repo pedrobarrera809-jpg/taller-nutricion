@@ -2,7 +2,7 @@
 <html lang="es">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Taller gratuito en vivo para nutricionistas: armo desde cero un generador de historias clínicas con IA, sin una sola línea de código.">
+<meta name="description" content="Taller gratuito en vivo para nutricionistas: qué puede hacer hoy la IA por tu consulta, qué todavía no, y cómo usarla sin ceder terreno clínico. Sin saber de tecnología y sin construir nada.">
 <meta name="theme-color" content="#0A0E27">
 <link rel="canonical" href="https://registro.institutodenutricionistas.com/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230A0E27'/%3E%3Ccircle cx='16' cy='16' r='6.5' fill='%23FF4444'/%3E%3C/svg%3E">
@@ -11,13 +11,13 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_CO">
 <meta property="og:url" content="https://registro.institutodenutricionistas.com/">
-<meta property="og:title" content="Taller gratuito: un generador de historias clínicas con IA, en vivo">
-<meta property="og:description" content="Sin una sola línea de código. Para nutricionistas que atienden pacientes reales todos los días.">
+<meta property="og:title" content="Taller gratuito: inteligencia artificial para nutricionistas">
+<meta property="og:description" content="Qué puede hacer hoy por tu consulta, qué todavía no, y cómo usarla sin ceder terreno clínico. 90 minutos, en vivo, con un caso real.">
 <meta name="twitter:card" content="summary_large_image">
 <!-- Imagen al compartir: sube una foto de 1200×630 px como public/og.jpg y quita los comentarios de la línea siguiente -->
 <!-- <meta property="og:image" content="https://registro.institutodenutricionistas.com/og.jpg"> -->
 
-<title>Taller gratuito: historias clínicas con IA — para nutricionistas</title>
+<title>Taller gratuito: inteligencia artificial para nutricionistas</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
@@ -95,7 +95,19 @@ h1,h2{
   color:transparent;-webkit-text-fill-color:transparent;
   filter:drop-shadow(0 0 34px rgba(0,217,255,.18));
 }
-h1{font-size:clamp(2.5rem,6.4vw,5rem)}
+/* El titular es largo por necesidad: nombra el tema, el límite y la promesa.
+   En vez de un bloque único de 21 palabras —que a 375px son siete líneas
+   iguales y el ojo no encuentra dónde agarrarse— se parte en dos niveles:
+   un enunciado grande y un matiz legible. Misma copia, la mitad del peso. */
+h1{font-size:clamp(2.05rem,5.6vw,4rem)}
+.h1-lead{display:block}
+.h1-sub{
+  display:block;margin-top:.4em;
+  /* proporcional al titular, pero nunca por debajo del cuerpo de texto:
+     si baja de ahí deja de leerse como subtítulo y parece letra chica */
+  font-size:max(1.06rem,.42em);font-weight:600;line-height:1.3;letter-spacing:-.015em;
+  color:var(--muted);-webkit-text-fill-color:var(--muted);
+}
 h2{font-size:clamp(2rem,4.4vw,3.4rem)}
 h3{font-size:1.15rem;letter-spacing:-.01em;line-height:1.25}
 p{margin:0}
@@ -158,14 +170,34 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
 
 .hero-grid{display:grid;gap:clamp(40px,5vw,64px);align-items:center}
 @media (min-width:1040px){.hero-grid{grid-template-columns:1fr 1.02fr}}
-.hero-copy{display:flex;flex-direction:column;gap:26px;max-width:640px}
+.hero-copy{display:flex;flex-direction:column;gap:22px;max-width:640px}
+
+/* La pregunta de entrada acompaña al titular, no compite con él:
+   cuerpo menor, azul secundario y una regla cian que la marca como
+   voz aparte. Sin esto se leía como un párrafo más. */
+.pretitle{
+  font-size:clamp(.97rem,1.1vw,1.06rem);line-height:1.5;
+  color:var(--muted-2);max-width:44ch;
+  padding-left:15px;border-left:2px solid var(--cyan);
+}
+
+/* La objeción #1 del ICP escéptico sale del párrafo y se responde
+   sola, con su propio peso. Enterrada en negrita dentro del texto
+   se perdía. */
+.hero-assure{
+  display:flex;gap:11px;align-items:flex-start;
+  padding:14px 16px;border-radius:8px;max-width:44ch;
+  background:var(--cyan-soft);border:1px solid rgba(0,217,255,.22);
+  color:var(--ink);font-weight:600;font-size:.98rem;line-height:1.42;
+}
+.hero-assure svg{width:18px;height:18px;flex:none;margin-top:3px;color:var(--cyan)}
 /* "con IA" — el dorado aparece aquí y en ningún otro lugar de la página.
    text-fill-color anula el recorte del degradado del titular. */
 .hero-copy h1 .hl{
   color:var(--gold);-webkit-text-fill-color:var(--gold);
   filter:drop-shadow(0 0 26px rgba(255,215,0,.35));
 }
-.hero-lead{font-size:clamp(1.05rem,1.5vw,1.2rem);color:var(--muted);max-width:50ch}
+.hero-lead{font-size:clamp(1rem,1.35vw,1.12rem);line-height:1.55;color:var(--muted);max-width:46ch}
 .hero-actions{display:flex;flex-direction:column;gap:14px;max-width:420px}
 .hero-meta{display:flex;flex-wrap:wrap;gap:8px 20px;color:var(--muted);align-items:center}
 .hero-meta b{color:var(--ink);font-weight:600}
@@ -397,6 +429,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
 .field input::placeholder{color:var(--muted);opacity:.6}
 .field input:focus,.field select:focus{border-color:var(--blue)}
 .reg-note{margin-top:14px;font-size:.84rem;color:var(--muted);text-align:center}
+/* "con código de país": aclara el formato sin gritar */
+.hint-cc{text-transform:none;letter-spacing:.04em;opacity:.7;font-size:.92em;margin-left:5px}
+/* error de envío: rojo, la señal, nunca el naranja de acción */
+.reg-error{margin-top:13px;font-size:.86rem;color:var(--live);text-align:center;line-height:1.45}
+/* mientras se envía, el botón se apaga y avisa */
+.reg-form.is-sending .btn{opacity:.6;pointer-events:none}
 .reg-done{display:none;padding:44px 30px;flex-direction:column;align-items:center;gap:14px;text-align:center}
 .reg.is-done .reg-body{display:none}
 .reg.is-done .reg-done{display:flex}
@@ -459,12 +497,21 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
       <div class="hero-copy">
         <span class="tag label"><span class="dot"></span> Taller gratuito en vivo</span>
 
-        <h1>Voy a armar, en vivo y desde cero, un generador de historias clínicas <span class="hl">con IA</span></h1>
+        <p class="pretitle">¿Sigues escribiendo cada historia clínica a mano y saliendo de consulta con la sensación de que el computador te robó el tiempo?</p>
 
-        <p class="hero-lead">Sin una sola línea de código. Para nutricionistas que quieren dejar de perder horas digitando en el computador sin prestar atención al paciente. No te voy a pedir que me creas — lo vas a ver construido frente a ti, en tiempo real.</p>
+        <h1>
+          <span class="h1-lead">Inteligencia artificial para nutricionistas</span>
+          <span class="h1-sub">Qué puede hacer hoy por tu consulta, qué todavía no, y cómo usarla <span class="hl">sin ceder terreno clínico</span>.</span>
+        </h1>
+
+        <p class="hero-lead">90 minutos, en vivo. Vas a ver un caso real de principio a fin: mis notas de consulta se convierten en una historia clínica completa —evaluación, diagnóstico, plan y suplementación— en menos de un minuto.</p>
+
+        <p class="hero-assure">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <span>No necesitas saber de tecnología y no vas a tener que construir nada.</span>
+        </p>
 
         <div class="hero-actions">
-          <a class="btn" href="#registro" data-scroll>Reservar mi cupo gratis</a>
           <div class="hero-meta label">
             <span><b class="ph">[FECHA]</b></span>
             <span><b class="ph">[HORA]</b> <span class="ph">[ZONA]</span></span>
@@ -475,31 +522,35 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
 
       </div>
 
-      <!-- ventana de demostración -->
-      <div class="screen">
-        <div class="screen-bar">
-          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5z" stroke-linejoin="round"></path>
-            <path d="M14 3v5h5M9 13h6M9 17h4" stroke-linecap="round"></path>
-          </svg>
-          <span class="title">
-            <b>Historia clínica · Paciente M. R., 34 años</b>
-            <span>Generada desde las notas de consulta</span>
+      <!-- ficha de registro -->
+      <div class="reg" id="registro">
+        <div class="reg-head">
+          <span class="label">Reserva tu cupo gratis</span>
+          <span class="cupos">CUPOS: <span class="ph">[CUPOS]</span></span>
+        </div>
+        <form class="reg-body reg-form" data-origen="hero" novalidate>
+          <div class="field">
+            <label for="h-nombre">Nombre y apellido</label>
+            <input id="h-nombre" name="nombre" type="text" autocomplete="name" placeholder="Tu nombre completo" required>
+          </div>
+          <div class="field">
+            <label for="h-correo">Correo electrónico</label>
+            <input id="h-correo" name="email" type="email" autocomplete="email" placeholder="tucorreo@ejemplo.com" required>
+          </div>
+          <div class="field">
+            <label for="h-wa">WhatsApp <span class="hint-cc">con código de país</span></label>
+            <input id="h-wa" name="whatsapp" type="tel" autocomplete="tel" placeholder="+57 300 123 4567" required>
+          </div>
+          <button class="btn" type="submit">Reservar mi cupo gratis</button>
+          <p class="reg-error" role="alert" hidden></p>
+          <p class="reg-note">Es gratis. Te llega el enlace al correo y al WhatsApp.</p>
+        </form>
+        <div class="reg-done" role="status" aria-live="polite">
+          <span class="tick">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
           </span>
-          <span class="live"><span class="dot"></span> En vivo</span>
-        </div>
-
-        <div class="screen-tabs" id="tabs">
-          <button type="button" data-go="0" class="is-on">Evaluación inicial</button>
-          <button type="button" data-go="1">Diagnóstico</button>
-          <button type="button" data-go="2">Plan y suplementos</button>
-        </div>
-
-        <div class="screen-body" id="demo" aria-label="Ejemplo de historia clínica generada"></div>
-
-        <div class="screen-foot">
-          <span class="label" id="timer">Generando…</span>
-          <button class="replay" id="replay" type="button">Generar de nuevo</button>
+          <h3>Cupo reservado</h3>
+          <p>Revisa tu correo: ahí está el enlace de acceso. Te escribo también por WhatsApp el día del taller.</p>
         </div>
       </div>
     </div>
@@ -511,15 +562,15 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
   <div class="wrap">
     <div class="stat">
       <div class="big">90 min</div>
-      <div class="lbl">De construcción en vivo, sin cortes de edición</div>
+      <div class="lbl">En vivo, con preguntas abiertas</div>
     </div>
     <div class="stat">
       <div class="big">0 líneas</div>
-      <div class="lbl">De código que tengas que escribir o entender</div>
+      <div class="lbl">De código: no vas a construir nada, vas a ver</div>
     </div>
     <div class="stat">
-      <div class="big ph">[CUPOS]</div>
-      <div class="lbl">Cupos en esta sesión, para poder responder preguntas</div>
+      <div class="big">1 caso real</div>
+      <div class="lbl">De las notas crudas a la historia firmada</div>
     </div>
   </div>
 </section>
@@ -529,22 +580,24 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
   <div class="wrap">
     <div class="head reveal">
       <p class="label">Qué vas a ver</p>
-      <h2>En 90 minutos, esto es lo que te llevas</h2>
+      <h2>En 90 minutos, esto es lo que vas a ver</h2>
     </div>
     <div class="cards reveal">
       <article class="card">
-        <span class="num">01 · LO QUE VES</span>
-        <p>Desde una <strong>pantalla en blanco</strong>, cómo se construye un generador de historias clínicas con IA — paso a paso, sin trucos de edición.</p>
+        <span class="num">01 · LO QUE ENTIENDES</span>
+        <p>Qué es y qué no es la IA para un nutricionista, sin humo: qué puede hacer hoy por tu consulta, qué todavía no, y <strong>dónde está la línea que no debes cruzar</strong> como profesional.</p>
       </article>
       <article class="card">
-        <span class="num">02 · LO QUE ENTIENDES</span>
-        <p>Exactamente <strong>qué parte de tu consulta puedes automatizar</strong> sin perder el control clínico sobre tus pacientes.</p>
+        <span class="num">02 · LO QUE VES</span>
+        <p>Un caso real de principio a fin: mis notas crudas se convierten en la historia clínica completa. Y no solo esa — <strong>te muestro funcionando varias herramientas de mi propia consulta</strong>: calculadoras, anamnesis, minutas y seguimiento.</p>
       </article>
       <article class="card">
-        <span class="num">03 · LO QUE TE LLEVAS</span>
-        <p>Sales con el <strong>generador de historias clínicas montado en la web</strong>, listo para que empieces a usarlo esa misma semana — solo por estar en vivo.</p>
+        <span class="num">03 · LO QUE DESCUBRES</span>
+        <p>Que no existe «la» herramienta: existe <strong>un mundo de herramientas por crear</strong>, una para cada cuello de botella de tu consulta. Sales sabiendo qué es posible y cuáles tendrían sentido para tu forma de atender.</p>
       </article>
     </div>
+
+    <p class="quote" style="margin-top:clamp(28px,4vw,40px);max-width:56ch">Son demostraciones, no entregables. No sales con un producto terminado bajo el brazo: sales sabiendo lo que se puede lograr — que es lo que de verdad te hace falta para decidir.</p>
   </div>
 </section>
 
@@ -557,12 +610,52 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
     </div>
     <div class="reveal">
       <ul class="pain-list">
-        <li><span class="x">✕</span><span>Rehaces el mismo formato cada vez que cambias de enfoque.</span></li>
         <li><span class="x">✕</span><span>Escribes las historias clínicas a mano, paciente por paciente.</span></li>
-        <li><span class="x">✕</span><span>Sabes que la tecnología podría ayudarte, pero no confías en que no te vaya a complicar más de lo que ya está.</span></li>
+        <li><span class="x">✕</span><span>Rehaces el mismo formato cada vez que cambias de enfoque.</span></li>
+        <li><span class="x">✕</span><span>Ves a todo el mundo hablando de IA y no sabes qué de eso aplica de verdad a una consulta de nutrición y qué es humo.</span></li>
+        <li><span class="x">✕</span><span>Y aunque quisieras probar, te frena una duda honesta: <i>¿esto no me va a hacer perder el control clínico de mi paciente?</i></span></li>
       </ul>
-      <p class="quote">No necesitas otro curso teórico de IA. Necesitas verlo funcionar una sola vez, con tus propios ojos, para saber si es para ti.</p>
+      <p class="quote">No necesitas otro curso teórico de IA. Necesitas ver una vez, con tus propios ojos, qué hace y qué no hace — y decidir tú.</p>
     </div>
+  </div>
+</section>
+
+<!-- ===================== LA LÍNEA CLÍNICA =====================
+     El diferenciador de la v2. Todo el mundo promete ahorrar tiempo;
+     nadie le habla al nutricionista de la línea que no se cruza.
+     Responde la objeción #1 sin discutirla: la nombra primero.
+     ============================================================ -->
+<section class="band">
+  <div class="wrap">
+    <div class="head reveal">
+      <p class="label">La línea clínica</p>
+      <h2>Usar IA no es delegar tu criterio</h2>
+      <p class="sub">La duda de fondo no es si la herramienta funciona. Es si vas a seguir siendo tú quien decide. Aquí está el reparto, sin ambigüedad.</p>
+    </div>
+
+    <div class="fit reveal">
+      <div class="fit-col fit-no">
+        <p class="label">Lo que la IA hace por ti</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcribe y ordena tus notas de consulta</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Redacta la historia con tu propio formato</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Traduce el plan a lenguaje de paciente</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Calcula, recuerda y hace el seguimiento</span></li>
+        </ul>
+      </div>
+
+      <div class="fit-col fit-yes">
+        <p class="label">Lo que sigue siendo tuyo</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>El juicio clínico y el diagnóstico</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Lo que se firma y lo que se entrega</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>La relación con el paciente</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>La responsabilidad profesional</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="quote reveal" style="margin-top:clamp(28px,4vw,40px);max-width:54ch">En el taller te muestro exactamente dónde va esa línea — incluido lo que la IA todavía hace mal y no deberías dejarle.</p>
   </div>
 </section>
 
@@ -579,7 +672,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
         <p class="label" style="color:var(--blue);margin-bottom:16px">Quien te lo va a mostrar</p>
         <p class="cred-name">Pedro Barrera</p>
         <p class="cred-role">Nutricionista Dietista · <b>+1000 pacientes</b> en nutrición clínica y deportiva</p>
-        <p>Las herramientas que vas a ver nacieron de una necesidad real — la de mi propia consulta. <b>No las diseñé para vender un taller</b>; las diseñé para sobrevivir mis días de atención. Por eso decidí compartirlas con otros profesionales.</p>
+        <p><b>No soy ingeniero ni vendedor de tecnología: soy colega.</b> Las herramientas que vas a ver nacieron de una necesidad real — la de mi propia consulta. <b>No las diseñé para vender un taller</b>; las diseñé para sobrevivir mis días de atención. Por eso decidí compartirlas con otros profesionales.</p>
         <div class="chips label">
           <span class="chip">Herramientas de seguimiento para pacientes</span>
           <span class="chip">Historias clínicas automatizadas</span>
@@ -626,15 +719,17 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
       <div class="fit-col fit-yes">
         <p class="label">Es para ti si</p>
         <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Atiendes pacientes en consulta y sientes que pasas más tiempo digitando en el computador que mirando al paciente.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Te da curiosidad la IA pero no has visto un ejemplo real, aplicado a nutrición, que te convenza.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Atiendes pacientes —o estás terminando la carrera y armando tu consulta— y pasas más tiempo digitando que mirando al paciente.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Te da curiosidad la IA pero quieres ver un ejemplo real, aplicado a nutrición, antes de creerle a nadie.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Quieres usar herramientas que <b style="color:var(--ink);font-weight:600">ya estén hechas</b>, no aprender a programar.</span></li>
         </ul>
       </div>
       <div class="fit-col fit-no">
         <p class="label">No es para ti si</p>
         <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round"></path></svg><span>Buscas un curso de programación o de «vibe coding»: aquí no vas a escribir código.</span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round"></path></svg><span>Ya tienes un sistema propio que te funciona y no buscas cambiarlo.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round"></path></svg><span>Buscas un taller puramente teórico, sin demostración en vivo.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round"></path></svg><span>Buscas teoría sin demostración en vivo.</span></li>
         </ul>
       </div>
     </div>
@@ -650,12 +745,20 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
     </div>
     <div class="faq reveal">
       <details open>
-        <summary>¿Necesito saber de tecnología para entender el taller?</summary>
-        <div class="a">No. Todo se explica en lenguaje de consulta, no de programador.</div>
+        <summary>¿Necesito saber de tecnología?</summary>
+        <div class="a">No. Todo se explica en lenguaje de consulta, no de programador. Si manejas un documento de texto y WhatsApp, tienes lo que se necesita.</div>
+      </details>
+      <details>
+        <summary>¿Tengo que construir algo durante el taller?</summary>
+        <div class="a">No, y tampoco te vas a llevar archivos. Vas a ver funcionando las herramientas que uso en mi consulta y a entender cómo están pensadas. <b>Lo que te llevas es el criterio y la idea de lo que es posible.</b> Construir es un camino opcional, y viene después, si tú quieres.</div>
+      </details>
+      <details>
+        <summary>¿Es seguro con los datos de mis pacientes?</summary>
+        <div class="a">Es la primera pregunta que hay que hacerse. En el taller te doy los criterios: qué se sube, qué nunca, y cómo trabajar con casos sin exponer datos identificables.</div>
       </details>
       <details>
         <summary>¿Es en vivo o grabado?</summary>
-        <div class="a">En vivo. La herramienta se construye en tiempo real, sin cortes de edición — por eso el cupo es limitado: quiero poder responder preguntas mientras la armo. Hay repetición disponible, también con cupo limitado.</div>
+        <div class="a">En vivo, con cupo limitado para poder responder preguntas. Hay repetición disponible <b>24 horas</b>.</div>
       </details>
       <details>
         <summary>¿Qué pasa si no puedo conectarme a esa hora?</summary>
@@ -663,7 +766,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
       </details>
       <details>
         <summary>¿Va a haber una oferta al final?</summary>
-        <div class="a">Sí, al cierre te cuento sobre el programa completo donde diseñas tus propias herramientas paso a paso. Nadie está obligado a comprarlo — el contenido del taller tiene valor por sí solo.</div>
+        <div class="a">Sí, y te lo digo desde ahora: al cierre te muestro los <b>tres caminos</b> —hacerlo tú, aprender a hacerlo conmigo, o que yo te lo construya— y puedes agendar una llamada si te interesa alguno. El contenido del taller vale por sí solo.</div>
       </details>
     </div>
   </div>
@@ -677,36 +780,26 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
       <h2><span class="ph">[FECHA]</span> · <span class="ph">[HORA]</span> · Cupos limitados</h2>
 
       <!-- ficha de registro -->
-      <div class="reg" id="registro">
+      <div class="reg" id="registro-final">
         <div class="reg-head">
           <span class="label">Reserva tu cupo</span>
           <span class="cupos">CUPOS: <span class="ph">[CUPOS]</span></span>
         </div>
-        <!-- Conecta tu proveedor: pon la URL en action="" y ajusta los name="". -->
-        <form class="reg-body" id="reg-form" action="" method="post" novalidate>
+        <form class="reg-body reg-form" data-origen="cierre" novalidate>
           <div class="field">
-            <label for="a-nombre">Nombre y apellido</label>
-            <input id="a-nombre" name="nombre" type="text" autocomplete="name" placeholder="Tu nombre completo" required>
+            <label for="f-nombre">Nombre y apellido</label>
+            <input id="f-nombre" name="nombre" type="text" autocomplete="name" placeholder="Tu nombre completo" required>
           </div>
           <div class="field">
-            <label for="a-correo">Correo electrónico</label>
-            <input id="a-correo" name="email" type="email" autocomplete="email" placeholder="tucorreo@ejemplo.com" required>
+            <label for="f-correo">Correo electrónico</label>
+            <input id="f-correo" name="email" type="email" autocomplete="email" placeholder="tucorreo@ejemplo.com" required>
           </div>
           <div class="field">
-            <label for="a-wa">WhatsApp</label>
-            <input id="a-wa" name="whatsapp" type="tel" autocomplete="tel" placeholder="Para el enlace y el recordatorio" required>
-          </div>
-          <div class="field">
-            <label for="a-consulta">¿Atiendes consulta actualmente?</label>
-            <select id="a-consulta" name="consulta" required>
-              <option value="">Selecciona una opción</option>
-              <option>Sí, consulta presencial</option>
-              <option>Sí, consulta virtual</option>
-              <option>Sí, presencial y virtual</option>
-              <option>Todavía no, estoy empezando</option>
-            </select>
+            <label for="f-wa">WhatsApp <span class="hint-cc">con código de país</span></label>
+            <input id="f-wa" name="whatsapp" type="tel" autocomplete="tel" placeholder="+57 300 123 4567" required>
           </div>
           <button class="btn" type="submit">Reservar mi cupo gratis</button>
+          <p class="reg-error" role="alert" hidden></p>
           <p class="reg-note">Es gratis. Te llega el enlace al correo y al WhatsApp.</p>
         </form>
         <div class="reg-done" role="status" aria-live="polite">
@@ -725,153 +818,13 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
 
 <div class="sticky" id="sticky">
   <span class="when">EN VIVO<br><span class="ph">[FECHA]</span> · <span class="ph">[HORA]</span></span>
-  <a class="btn" href="#registro" data-scroll>Reservar cupo</a>
+  <a class="btn" href="#registro-final" data-scroll>Reservar cupo</a>
 </div>
 
 <script>
 (function(){
   var root = document.documentElement;
   root.classList.add('js');
-  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ---------- demo: la historia clínica se escribe sola ----------
-     Para cambiar el ejemplo, edita el arreglo DOC de abajo.
-     ---------------------------------------------------------------- */
-  var DOC = [
-    {
-      h: 'Evaluación inicial',
-      meta: [['Paciente','Femenino · 34 años'],['Motivo','Control nutricional'],['Antecedente','Diabetes tipo 2']],
-      p: [
-        'Patrón de consumo: 4 comidas al día, apetito bueno, aversiones: ninguna, antojos: ninguno. Presenta estreñimiento.',
-        'Frecuencia de consumo semanal: lácteos 2x, carnes rojas 7x, aves y pescados 7x, huevos 7x, leguminosas 3x, frutas 7x, verduras 7x, cereales y tubérculos 7x, grasas añadidas 7x, fritos 1x.',
-        'Recordatorio de 24 horas. Desayuno: 2 huevos pericos, arepa y plátano asado. Media mañana: fruta y batido de banano, fresa, leche y maní. Almuerzo: ensalada, papa y carne. Media tarde: fruta. Cena: 2 huevos y 1 plátano asado.'
-      ]
-    },
-    {
-      h: 'Diagnóstico nutricional',
-      p: [
-        'Paciente femenino con diagnóstico de diabetes tipo 2 sin complicaciones. Presenta estado nutricional de sobrepeso según indicadores antropométricos (Resolución 2465 de 2016). Sin cambios aparentes en la masa grasa. Sin disminución del apetito. Se identifica una ingesta inadecuada de grupos de alimentos.',
-        'No refiere síntomas gastrointestinales. No presenta signos de sarcopenia ni pérdida de masa muscular aparente. Sin evidencia de edemas. Niega dificultades de deglución o disfagia. Con exámenes de laboratorio alterados: colesterol y triglicéridos.',
-        'Se realiza anamnesis alimentaria, evidenciando una dieta poco variada y equilibrada, fraccionada en 4 tiempos de comida al día, con consumo inadecuado de frutas y verduras, sin consumo de jugos naturales y moderado de preparaciones fritas y alimentos con azúcares añadidos. Tolera adecuadamente los alimentos consumidos. El recordatorio de 24 horas muestra un patrón de comidas irregular.'
-      ]
-    },
-    {
-      h: 'Plan de tratamiento clínico',
-      p: [
-        'Suplementos y productos recomendados: yogur griego, yogur con probióticos y frutos secos.',
-        'Omega 3: cápsulas de 1000 mg cada 24 horas.',
-        'Creatina: 6 g cada 24 horas, con sello CREAPURE, sin azúcar ni maltodextrina.'
-      ]
-    }
-  ];
-
-  var demo = document.getElementById('demo');
-  var replay = document.getElementById('replay');
-  var timerEl = document.getElementById('timer');
-  var tabs = document.getElementById('tabs');
-  var tick = null, clock = null, started = 0;
-
-  var WORDS = DOC.reduce(function(n, s){
-    return n + s.p.join(' ').split(/\s+/).length;
-  }, 0);
-
-  function skeleton(){
-    demo.innerHTML = '';
-    DOC.forEach(function(s, i){
-      var sec = document.createElement('section');
-      sec.dataset.i = i;
-      var h = document.createElement('h4');
-      h.textContent = s.h;
-      sec.appendChild(h);
-      if (s.meta) {
-        var m = document.createElement('div');
-        m.className = 'meta';
-        m.innerHTML = s.meta.map(function(pair){
-          return '<span>' + pair[0] + ': <b>' + pair[1] + '</b></span>';
-        }).join('');
-        sec.appendChild(m);
-      }
-      demo.appendChild(sec);
-    });
-  }
-
-  function fillAll(){
-    skeleton();
-    DOC.forEach(function(s, i){
-      var sec = demo.querySelector('section[data-i="' + i + '"]');
-      s.p.forEach(function(txt){
-        var p = document.createElement('p');
-        p.textContent = txt;
-        sec.appendChild(p);
-      });
-    });
-    timerEl.textContent = 'Generado en 8.4 s · ' + WORDS + ' palabras';
-  }
-
-  function type(){
-    if (tick) { clearTimeout(tick); tick = null; }
-    if (clock) { clearInterval(clock); clock = null; }
-    if (reduced) { fillAll(); return; }
-
-    skeleton();
-    started = Date.now();
-    clock = setInterval(function(){
-      timerEl.textContent = 'Generando… ' + ((Date.now() - started) / 1000).toFixed(1) + ' s';
-    }, 100);
-
-    var si = 0, pi = 0, ci = 0, node = null;
-
-    function step(){
-      if (si >= DOC.length) {
-        clearInterval(clock); clock = null;
-        timerEl.textContent = 'Generado en ' + ((Date.now() - started) / 1000).toFixed(1) + ' s · ' + WORDS + ' palabras';
-        demo.scrollTo({ top: 0, behavior: 'smooth' });
-        return;
-      }
-      var sec = DOC[si];
-      if (pi >= sec.p.length) { si++; pi = 0; ci = 0; node = null; tick = setTimeout(step, 260); return; }
-
-      var text = sec.p[pi];
-      if (!node) {
-        node = document.createElement('p');
-        demo.querySelector('section[data-i="' + si + '"]').appendChild(node);
-      }
-      if (ci < text.length) {
-        ci += Math.max(2, Math.round(text.length / 34));
-        node.textContent = text.slice(0, ci);
-        tick = setTimeout(step, 16);
-      } else {
-        node.textContent = text;
-        demo.scrollTop = demo.scrollHeight;
-        pi++; ci = 0; node = null;
-        tick = setTimeout(step, 150);
-      }
-    }
-    step();
-  }
-
-  /* pestañas: llevan al bloque correspondiente del documento */
-  tabs.addEventListener('click', function(ev){
-    var b = ev.target.closest('button[data-go]');
-    if (!b || !demo.firstChild) return;
-    var sec = demo.querySelector('section[data-i="' + b.dataset.go + '"]');
-    if (sec) { demo.scrollTo({ top: sec.offsetTop - demo.firstChild.offsetTop, behavior:'smooth' }); }
-  });
-  demo.addEventListener('scroll', function(){
-    if (!demo.firstChild) return;
-    var secs = demo.querySelectorAll('section');
-    var top = demo.scrollTop + 40, active = 0;
-    secs.forEach(function(s, i){ if (s.offsetTop - demo.firstChild.offsetTop <= top) active = i; });
-    tabs.querySelectorAll('button').forEach(function(b, i){ b.classList.toggle('is-on', i === active); });
-  });
-
-  if ('IntersectionObserver' in window) {
-    var once = new IntersectionObserver(function(e){
-      if (e[0].isIntersecting) { type(); once.disconnect(); }
-    }, { threshold:.25 });
-    once.observe(demo);
-  } else { fillAll(); }
-  replay.addEventListener('click', type);
 
   /* ---------- revelado ---------- */
   var items = document.querySelectorAll('.reveal');
@@ -903,15 +856,83 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
     }, { threshold:0 }).observe(card);
   }
 
-  /* ---------- envío ---------- */
-  var form = document.getElementById('reg-form');
-  form.addEventListener('submit', function(ev){
-    if (!form.checkValidity()) { form.reportValidity(); ev.preventDefault(); return; }
-    if (!form.getAttribute('action')) {
+  /* ---------- envío a GoHighLevel ----------
+     Los dos formularios (hero y cierre) usan este mismo manejador.
+     El lead NO se manda directo a GoHighLevel desde el navegador:
+     va a /api/registro, un endpoint del propio Worker que guarda el
+     token como secreto y reenvía el dato. Así la credencial nunca
+     queda visible en el código de la página.
+     ------------------------------------------------------------- */
+  var ENDPOINT = '/api/registro';
+  var GRACIAS  = '/gracias';
+  var PAIS_POR_DEFECTO = '57';   // Colombia. Cámbialo si tu lista es de otro país.
+
+  /* Deja el número en formato E.164 (+573001234567), que es el que
+     GoHighLevel necesita para poder escribir por WhatsApp. */
+  function normalizarTelefono(valor){
+    var v = String(valor || '').trim();
+    var masPrefijo = v.charAt(0) === '+';
+    var digitos = v.replace(/\D/g, '');
+    if (!digitos) return '';
+    if (masPrefijo) return '+' + digitos;
+    if (digitos.charAt(0) === '0') digitos = digitos.replace(/^0+/, '');
+    // Sin código de país (10 dígitos o menos) le ponemos el que corresponda.
+    return digitos.length <= 10 ? '+' + PAIS_POR_DEFECTO + digitos : '+' + digitos;
+  }
+
+  document.querySelectorAll('form.reg-form').forEach(function(form){
+    var tarjeta = form.closest('.reg');
+    var error   = form.querySelector('.reg-error');
+    var boton   = form.querySelector('button[type="submit"]');
+    var textoOriginal = boton ? boton.textContent : '';
+
+    form.addEventListener('submit', function(ev){
       ev.preventDefault();
-      card.classList.add('is-done');
-      card.scrollIntoView({ behavior:'smooth', block:'center' });
-    }
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+
+      var telefono = normalizarTelefono(form.whatsapp.value);
+      if (telefono.replace(/\D/g,'').length < 10) {
+        error.textContent = 'Revisa el número de WhatsApp: escríbelo con el código de país, por ejemplo +57 300 123 4567.';
+        error.hidden = false;
+        form.whatsapp.focus();
+        return;
+      }
+
+      var nombre = form.nombre.value.trim();
+      var corte  = nombre.indexOf(' ');
+      var datos = {
+        nombre:     nombre,
+        firstName:  corte > 0 ? nombre.slice(0, corte) : nombre,
+        lastName:   corte > 0 ? nombre.slice(corte + 1).trim() : '',
+        email:      form.email.value.trim().toLowerCase(),
+        phone:      telefono,
+        origen:     form.dataset.origen,           // "hero" o "cierre"
+        fuente:     'landing-registro',
+        url:        location.href
+      };
+
+      error.hidden = true;
+      form.classList.add('is-sending');
+      if (boton) boton.textContent = 'Reservando…';
+
+      fetch(ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(datos)
+      })
+      .then(function(r){
+        if (!r.ok) throw new Error('respuesta ' + r.status);
+        // Registro guardado: el correo viaja a /gracias para poder
+        // pegarle allí la respuesta de la micro-encuesta.
+        location.href = GRACIAS + '?email=' + encodeURIComponent(datos.email);
+      })
+      .catch(function(){
+        form.classList.remove('is-sending');
+        if (boton) boton.textContent = textoOriginal;
+        error.textContent = 'No pudimos guardar tu registro. Revisa tu conexión e inténtalo otra vez.';
+        error.hidden = false;
+      });
+    });
   });
 })();
 </script>

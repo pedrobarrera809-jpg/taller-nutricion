@@ -1,11 +1,37 @@
 {
-  // Configuración del Worker que sirve la landing page.
-  // Los archivos de la carpeta "public" se publican tal cual:
-  // public/index.html  ->  https://registro.institutodenutricionistas.com
+  // Worker que sirve la landing y recibe los registros.
+  //
+  //   public/index.html    ->  https://registro.institutodenutricionistas.com
+  //   public/gracias.html  ->  https://registro.institutodenutricionistas.com/gracias
+  //   POST /api/registro   ->  src/index.js (manda el lead a GoHighLevel)
+  //
+  // El token de GoHighLevel NO va aquí: se guarda como secreto con
+  //   npx wrangler secret put GHL_WEBHOOK_URL
+  // (ver src/index.js para las dos vías posibles).
   "name": "taller-nutricion",
+  "main": "src/index.js",
   "compatibility_date": "2025-01-01",
+
+  // Dominio propio. Declararlo aquí —y no solo en el panel de Cloudflare—
+  // hace que el vínculo viaje con el repositorio: si mañana se despliega
+  // desde otra máquina, la ruta se reconstruye sola.
+  // Requiere que la zona institutodenutricionistas.com esté en esta
+  // cuenta de Cloudflare, cosa que ya se cumple: el dominio responde.
+  "routes": [
+    { "pattern": "registro.institutodenutricionistas.com", "custom_domain": true }
+  ],
+
   "assets": {
     "directory": "./public",
-    "not_found_handling": "single-page-application"
+    "binding": "ASSETS",
+
+    // Los archivos se sirven primero, MENOS /api/*: esas rutas van
+    // siempre al Worker. Sin esto, /api/registro nunca se ejecutaría.
+    "run_worker_first": ["/api/*"],
+
+    // Antes estaba en "single-page-application", que devolvía la landing
+    // (con código 200) ante cualquier URL mal escrita. Esto no es una SPA:
+    // una ruta que no existe debe responder 404.
+    "not_found_handling": "none"
   }
 }
