@@ -309,9 +309,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
 .photo-wide{aspect-ratio:3/2}
 
 .gallery{display:grid;gap:14px}
-/* Dos fotos: se acota el ancho y se centra para que no crezcan de más.
-   Si algún día vuelven a ser tres, cambia el 2 por 3 y quita max-width/margin. */
-@media (min-width:760px){.gallery{grid-template-columns:repeat(2,1fr);max-width:860px;margin-inline:auto}}
+/* Tres fotos a lo ancho. Si vuelven a ser dos, cambia el 3 por 2 y
+   devuelve max-width:860px + margin-inline:auto para que no crezcan de más. */
+@media (min-width:760px){.gallery{grid-template-columns:repeat(3,1fr)}}
 .gallery figure{margin:0;display:flex;flex-direction:column;gap:10px}
 .gallery figcaption{color:var(--muted);font-size:.85rem}
 
@@ -724,6 +724,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
       <figure>
         <div class="photo photo-square has-img">
           <img src="consulta.jpg" alt="Toma de circunferencia de cintura durante una valoración antropométrica" width="800" height="800" loading="lazy">
+        </div>
+      </figure>
+      <figure>
+        <div class="photo photo-square has-img">
+          <img src="consulta-pediatrica.jpg" alt="Pedro Barrera midiendo el perímetro cefálico de un lactante durante una valoración nutricional" width="831" height="1168" loading="lazy">
         </div>
       </figure>
       <figure>
